@@ -1,6 +1,10 @@
 import { db } from '@/lib/db'
 
 describe('Prisma client', () => {
+  afterAll(async () => {
+    await db.$disconnect()
+  })
+
   it('exports a PrismaClient instance', () => {
     expect(db).toBeDefined()
     expect(typeof db.user.findFirst).toBe('function')

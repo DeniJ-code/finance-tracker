@@ -81,7 +81,7 @@ model DailyExpense {
   amount     Decimal  @db.Decimal(12, 2)
   currency   String   @default("EUR")
   categoryId String
-  category   Category @relation(fields: [categoryId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   note       String?
   source     String   @default("web") // web | bot
   createdAt  DateTime @default(now())
