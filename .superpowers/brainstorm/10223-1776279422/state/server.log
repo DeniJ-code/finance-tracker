@@ -1,0 +1,13 @@
+{"type":"server-started","port":51982,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:51982","screen_dir":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content","state_dir":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/state"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/welcome.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/navigation.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/dashboard.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/regular-expenses.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/goals.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/goals-v2.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/daily.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/color-approach.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/color-approach-v2.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/capital.html"}
+{"type":"screen-added","file":"/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.superpowers/brainstorm/10223-1776279422/content/investments.html"}
+{"type":"server-stopped","reason":"idle timeout"}

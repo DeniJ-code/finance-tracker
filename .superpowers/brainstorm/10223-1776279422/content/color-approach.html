@@ -1,0 +1,117 @@
+<style>
+  .cat-chip { padding:2px 8px;border-radius:12px;font-size:10px }
+  .expense-row { display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;margin-bottom:3px;font-size:11px }
+  .cat-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0 }
+</style>
+
+<h2>Цветовой подход для категорий</h2>
+<p class="subtitle">Три варианта — как обозначать категории расходов</p>
+
+<div class="options">
+
+  <!-- Option A: мuted palette -->
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Приглушённые тона</h3>
+      <p>Те же цвета, но десатурированные — читаются, но не кричат</p>
+      <div style="margin-top:10px;background:rgba(0,0,0,0.15);border-radius:8px;padding:10px">
+        <div class="expense-row">
+          <div class="cat-dot" style="background:#9ca3af"></div>
+          <span class="cat-chip" style="background:rgba(156,163,175,0.15);color:#9ca3af">Еда</span>
+          <span style="flex:1">Кофе</span>
+          <span style="opacity:0.6">−€3.50</span>
+        </div>
+        <div class="expense-row">
+          <div class="cat-dot" style="background:#6b7f6b"></div>
+          <span class="cat-chip" style="background:rgba(107,127,107,0.2);color:#8fa88f">Продукты</span>
+          <span style="flex:1">Lidl</span>
+          <span style="opacity:0.6">−€47.20</span>
+        </div>
+        <div class="expense-row">
+          <div class="cat-dot" style="background:#7b82c4"></div>
+          <span class="cat-chip" style="background:rgba(123,130,196,0.15);color:#9da3d4">Транспорт</span>
+          <span style="flex:1">Метро</span>
+          <span style="opacity:0.6">−€4.00</span>
+        </div>
+        <div class="expense-row">
+          <div class="cat-dot" style="background:#c47b9d"></div>
+          <span class="cat-chip" style="background:rgba(196,123,157,0.15);color:#d49db8">Здоровье</span>
+          <span style="flex:1">Аптека</span>
+          <span style="opacity:0.6">−€23.90</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option B: monochrome + одна точка -->
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Монохром + цветная точка</h3>
+      <p>Весь текст нейтральный, категория обозначается только маленькой точкой</p>
+      <div style="margin-top:10px;background:rgba(0,0,0,0.15);border-radius:8px;padding:10px">
+        <div class="expense-row">
+          <div class="cat-dot" style="background:#f59e0b"></div>
+          <span style="flex:1;opacity:0.8">Кофе</span>
+          <span style="font-size:10px;opacity:0.35;margin-right:6px">Еда</span>
+          <span style="opacity:0.7">−€3.50</span>
+        </div>
+        <div class="expense-row">
+          <div class="cat-dot" style="background:#22c55e"></div>
+          <span style="flex:1;opacity:0.8">Lidl</span>
+          <span style="font-size:10px;opacity:0.35;margin-right:6px">Продукты</span>
+          <span style="opacity:0.7">−€47.20</span>
+        </div>
+        <div class="expense-row">
+          <div class="cat-dot" style="background:#6366f1"></div>
+          <span style="flex:1;opacity:0.8">Метро</span>
+          <span style="font-size:10px;opacity:0.35;margin-right:6px">Транспорт</span>
+          <span style="opacity:0.7">−€4.00</span>
+        </div>
+        <div class="expense-row">
+          <div class="cat-dot" style="background:#ec4899"></div>
+          <span style="flex:1;opacity:0.8">Аптека</span>
+          <span style="font-size:10px;opacity:0.35;margin-right:6px">Здоровье</span>
+          <span style="opacity:0.7">−€23.90</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option C: один акцент -->
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Один акцент</h3>
+      <p>Без цветов по категориям вообще — только иконка категории, цвет один</p>
+      <div style="margin-top:10px;background:rgba(0,0,0,0.15);border-radius:8px;padding:10px">
+        <div class="expense-row">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.4;flex-shrink:0"><path d="M2 4h10l-1 7H3L2 4z"/><path d="M5 4V3a2 2 0 0 1 4 0v1"/></svg>
+          <span style="flex:1;opacity:0.85">Кофе</span>
+          <span style="font-size:10px;opacity:0.3;margin-right:6px">Еда</span>
+          <span style="color:#818cf8">−€3.50</span>
+        </div>
+        <div class="expense-row">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.4;flex-shrink:0"><path d="M7 2l1.5 3 3.5.5-2.5 2.5.5 3.5L7 10l-3 1.5.5-3.5L2 5.5 5.5 5z"/></svg>
+          <span style="flex:1;opacity:0.85">Lidl</span>
+          <span style="font-size:10px;opacity:0.3;margin-right:6px">Продукты</span>
+          <span style="color:#818cf8">−€47.20</span>
+        </div>
+        <div class="expense-row">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.4;flex-shrink:0"><circle cx="7" cy="7" r="5"/><path d="M7 4v3l2 2"/></svg>
+          <span style="flex:1;opacity:0.85">Метро</span>
+          <span style="font-size:10px;opacity:0.3;margin-right:6px">Транспорт</span>
+          <span style="color:#818cf8">−€4.00</span>
+        </div>
+        <div class="expense-row">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.4;flex-shrink:0"><path d="M7 2a3 3 0 0 1 3 3c0 2-3 7-3 7S4 7 4 5a3 3 0 0 1 3-3z"/></svg>
+          <span style="flex:1;opacity:0.85">Аптека</span>
+          <span style="font-size:10px;opacity:0.3;margin-right:6px">Здоровье</span>
+          <span style="color:#818cf8">−€23.90</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

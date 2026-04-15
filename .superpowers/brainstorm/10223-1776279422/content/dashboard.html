@@ -1,0 +1,123 @@
+<h2>Дашборд — главный экран</h2>
+<p class="subtitle">Обзор всего финансового состояния одним взглядом</p>
+
+<div class="mockup">
+  <div class="mockup-header">Finance Tracker — Дашборд</div>
+  <div class="mockup-body" style="padding:0;display:flex;min-height:480px">
+
+    <!-- Sidebar -->
+    <div style="width:180px;background:rgba(0,0,0,0.2);padding:16px 12px;flex-shrink:0;display:flex;flex-direction:column;gap:2px">
+      <div style="font-weight:700;font-size:14px;margin-bottom:16px;padding:0 8px">💼 Finance</div>
+      <div style="padding:8px;border-radius:6px;background:rgba(99,102,241,0.35);font-size:12px;font-weight:600">📊 Дашборд</div>
+      <div style="padding:8px;border-radius:6px;font-size:12px;opacity:0.65">💸 Ежедневные</div>
+      <div style="padding:8px;border-radius:6px;font-size:12px;opacity:0.65">🔄 Регулярные</div>
+      <div style="padding:8px;border-radius:6px;font-size:12px;opacity:0.65">🎯 Цели</div>
+      <div style="padding:8px;border-radius:6px;font-size:12px;opacity:0.65">💰 Капитал</div>
+      <div style="padding:8px;border-radius:6px;font-size:12px;opacity:0.65">📈 Инвестиции</div>
+      <div style="margin-top:auto;padding:8px;border-radius:6px;font-size:12px;opacity:0.5">⚙️ Настройки</div>
+    </div>
+
+    <!-- Main content -->
+    <div style="flex:1;padding:16px;overflow:auto">
+
+      <!-- KPI Cards row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
+        <div style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:8px;padding:12px">
+          <div style="font-size:10px;opacity:0.6;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Общий капитал</div>
+          <div style="font-size:20px;font-weight:700">€8,500</div>
+          <div style="font-size:10px;opacity:0.5;margin-top:2px">3 счёта</div>
+        </div>
+        <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:12px">
+          <div style="font-size:10px;opacity:0.6;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Расходы / месяц</div>
+          <div style="font-size:20px;font-weight:700">€1,663</div>
+          <div style="font-size:10px;opacity:0.5;margin-top:2px">фикс. + подписки</div>
+        </div>
+        <div style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);border-radius:8px;padding:12px">
+          <div style="font-size:10px;opacity:0.6;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Доходы / месяц</div>
+          <div style="font-size:20px;font-weight:700">€3,200</div>
+          <div style="font-size:10px;opacity:0.5;margin-top:2px">свободно: €1,537</div>
+        </div>
+        <div style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.25);border-radius:8px;padding:12px">
+          <div style="font-size:10px;opacity:0.6;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">На цели / месяц</div>
+          <div style="font-size:20px;font-weight:700">€650</div>
+          <div style="font-size:10px;opacity:0.5;margin-top:2px">3 активных цели</div>
+        </div>
+      </div>
+
+      <!-- Row 2: Goals + Upcoming payments -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+
+        <!-- Goals progress -->
+        <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:12px">
+          <div style="font-size:11px;font-weight:600;margin-bottom:10px;opacity:0.8">🎯 Прогресс целей</div>
+          <div style="margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>Машина</span><span style="opacity:0.6">€4,200 / €12,000</span></div>
+            <div style="background:rgba(255,255,255,0.1);border-radius:3px;height:6px"><div style="width:35%;background:#6366f1;border-radius:3px;height:6px"></div></div>
+          </div>
+          <div style="margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>Отпуск Япония</span><span style="opacity:0.6">€1,800 / €3,000</span></div>
+            <div style="background:rgba(255,255,255,0.1);border-radius:3px;height:6px"><div style="width:60%;background:#22c55e;border-radius:3px;height:6px"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px"><span>Ноутбук</span><span style="opacity:0.6">€600 / €2,000</span></div>
+            <div style="background:rgba(255,255,255,0.1);border-radius:3px;height:6px"><div style="width:30%;background:#f59e0b;border-radius:3px;height:6px"></div></div>
+          </div>
+        </div>
+
+        <!-- Upcoming payments -->
+        <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:12px">
+          <div style="font-size:11px;font-weight:600;margin-bottom:10px;opacity:0.8">📅 Ближайшие платежи</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span>Netflix</span>
+              <span style="opacity:0.5;font-size:10px">через 3 дня</span>
+              <span style="color:#ef4444">€15.00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span>Spotify</span>
+              <span style="opacity:0.5;font-size:10px">через 5 дней</span>
+              <span style="color:#ef4444">€9.99</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span>Аренда</span>
+              <span style="opacity:0.5;font-size:10px">через 12 дней</span>
+              <span style="color:#ef4444">€800</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span>Страховка</span>
+              <span style="opacity:0.5;font-size:10px">через 23 дня</span>
+              <span style="color:#ef4444">€40.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Recent daily expenses -->
+      <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div style="font-size:11px;font-weight:600;opacity:0.8">💸 Последние расходы (сегодня)</div>
+          <div style="font-size:10px;opacity:0.4">+ добавить</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <div style="background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 12px;font-size:11px;flex:1;text-align:center">
+            <div style="opacity:0.5;font-size:10px;margin-bottom:2px">Кофе</div>
+            <div>€3.50</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 12px;font-size:11px;flex:1;text-align:center">
+            <div style="opacity:0.5;font-size:10px;margin-bottom:2px">Продукты</div>
+            <div>€47.20</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 12px;font-size:11px;flex:1;text-align:center">
+            <div style="opacity:0.5;font-size:10px;margin-bottom:2px">Транспорт</div>
+            <div>€4.00</div>
+          </div>
+          <div style="background:rgba(99,102,241,0.2);border:1px dashed rgba(99,102,241,0.4);border-radius:6px;padding:8px 12px;font-size:11px;flex:1;text-align:center;opacity:0.6">
+            <div style="margin-bottom:2px">+</div>
+            <div style="font-size:10px">добавить</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
