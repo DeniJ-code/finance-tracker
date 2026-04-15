@@ -13,7 +13,14 @@
       "Bash(npm test *)",
       "Bash(git -C /home/deni/Schreibtisch/Vibecoding/Finance-Tracker ls-files)",
       "Bash(grep -E \"node_modules|\\\\.env\\\\.local$|\\\\.next\")",
-      "Bash(git -C /home/deni/Schreibtisch/Vibecoding/Finance-Tracker status --short)"
+      "Bash(git -C /home/deni/Schreibtisch/Vibecoding/Finance-Tracker status --short)",
+      "Bash(npx prisma *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(git commit *)",
+      "Bash(git worktree *)",
+      "Bash(git branch *)",
+      "Bash(npx tsc *)",
+      "Bash(node -e ' *)"
     ]
   }
 }

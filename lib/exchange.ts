@@ -22,6 +22,11 @@ export function convertToBase(
   rates: Record<string, number>
 ): number {
   if (currency === baseCurrency) return amount
-  const rate = rates[currency] ?? 1
+  const rate = rates[currency]
+  if (rate === undefined) {
+    // Rate not available for this currency; returning amount unchanged as fallback.
+    // Callers should validate that required currencies are present in the rates map.
+    return amount
+  }
   return amount / rate
 }

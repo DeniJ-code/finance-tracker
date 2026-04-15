@@ -22,7 +22,11 @@ export async function POST(req: NextRequest) {
     },
   })
 
-  await ensureDefaultCategories(user.id)
+  try {
+    await ensureDefaultCategories(user.id)
+  } catch (err) {
+    console.error('ensureDefaultCategories failed:', err)
+  }
 
   const session = await getSession()
   session.userId = user.id
