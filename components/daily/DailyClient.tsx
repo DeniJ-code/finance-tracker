@@ -117,6 +117,7 @@ export function DailyClient({
           <button
             onClick={() => handleNavMonth(prevMonth(month))}
             className="p-1 text-zinc-400 hover:text-zinc-100"
+            aria-label="Previous month"
           >
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M15 18l-6-6 6-6" />
@@ -128,6 +129,7 @@ export function DailyClient({
           <button
             onClick={() => handleNavMonth(nextMonth(month))}
             className="p-1 text-zinc-400 hover:text-zinc-100"
+            aria-label="Next month"
           >
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M9 18l6-6-6-6" />
@@ -199,7 +201,7 @@ export function DailyClient({
         <div className="space-y-5 overflow-y-auto">
           {/* Quick-add form */}
           <form onSubmit={handleSubmit} className="bg-zinc-900 rounded-xl p-4 space-y-3">
-            <p className="text-xs font-medium text-zinc-400 uppercase tracking-wide">Add expense</p>
+            <p className="text-xs font-medium text-zinc-400 tracking-wide">Add expense</p>
             <input
               type="number"
               step="0.01"

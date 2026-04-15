@@ -11,7 +11,10 @@ export default async function DailyPage({
   const session = await getSession()
   if (!session.userId) redirect('/auth')
 
-  const month = searchParams.month ?? new Date().toISOString().slice(0, 7)
+  const rawMonth = searchParams.month ?? ''
+  const month = /^\d{4}-\d{2}$/.test(rawMonth)
+    ? rawMonth
+    : new Date().toISOString().slice(0, 7)
   const [year, monthNum] = month.split('-').map(Number)
   const from = new Date(year, monthNum - 1, 1)
   const to = new Date(year, monthNum, 1)
