@@ -9,6 +9,8 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
+    '^iron-session$': '<rootDir>/__mocks__/iron-session.ts',
+    '^next/headers$': '<rootDir>/__mocks__/next/headers.ts',
   },
 }
 
