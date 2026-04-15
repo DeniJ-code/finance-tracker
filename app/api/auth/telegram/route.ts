@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { verifyTelegramPayload, getSession } from '@/lib/auth'
+import { ensureDefaultCategories } from '@/lib/categories'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
@@ -20,6 +21,8 @@ export async function POST(req: NextRequest) {
       baseCurrency: 'EUR',
     },
   })
+
+  await ensureDefaultCategories(user.id)
 
   const session = await getSession()
   session.userId = user.id
