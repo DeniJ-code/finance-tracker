@@ -1,3 +1,29 @@
-export default function RecurringPage() {
-  return <div className="p-6"><h1 className="text-xl font-semibold">Регулярные платежи</h1><p className="text-zinc-400 text-sm mt-1">Coming in Plan 2</p></div>
+import { db } from '@/lib/db'
+import { getSession } from '@/lib/auth'
+import { redirect } from 'next/navigation'
+import { RecurringClient } from '@/components/recurring/RecurringClient'
+
+export default async function RecurringPage() {
+  const session = await getSession()
+  if (!session.userId) redirect('/auth')
+
+  const rawPayments = await db.recurringPayment.findMany({
+    where: { userId: session.userId },
+    orderBy: { createdAt: 'desc' },
+  })
+
+  const payments = rawPayments.map(p => ({
+    id: p.id,
+    name: p.name,
+    type: p.type,
+    amount: Number(p.amount),
+    currency: p.currency,
+    frequencyPerYear: p.frequencyPerYear,
+    category: p.category,
+    status: p.status,
+    nextPaymentDate: p.nextPaymentDate?.toISOString() ?? null,
+    notes: p.notes,
+  }))
+
+  return <RecurringClient payments={payments} />
 }
