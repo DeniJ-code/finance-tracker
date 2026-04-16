@@ -3,6 +3,7 @@
 import { db } from '@/lib/db'
 import { getSession } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
+import { SUPPORTED_CURRENCIES } from '@/lib/format'
 
 export async function createAccount(formData: FormData) {
   const session = await getSession()
@@ -15,6 +16,8 @@ export async function createAccount(formData: FormData) {
   const color = (formData.get('color') as string) || '#5a68a8'
 
   if (!name) throw new Error('Name required')
+  if (!['debit', 'savings', 'cash', 'other'].includes(type)) throw new Error('Invalid type')
+  if (!SUPPORTED_CURRENCIES.includes(currency)) throw new Error('Invalid currency')
 
   await db.account.create({
     data: { userId: session.userId, name, type, balance, currency, color },
@@ -33,6 +36,8 @@ export async function updateAccount(id: string, formData: FormData) {
   const color = (formData.get('color') as string) || '#5a68a8'
 
   if (!name) throw new Error('Name required')
+  if (!['debit', 'savings', 'cash', 'other'].includes(type)) throw new Error('Invalid type')
+  if (!SUPPORTED_CURRENCIES.includes(currency)) throw new Error('Invalid currency')
 
   await db.account.updateMany({
     where: { id, userId: session.userId },

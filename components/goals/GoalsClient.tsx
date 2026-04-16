@@ -175,7 +175,17 @@ function GoalModal({
   )
 }
 
-export function GoalsClient({ goals, baseCurrency }: { goals: Goal[]; baseCurrency: string }) {
+export function GoalsClient({
+  goals,
+  baseCurrency,
+  totalSaved,
+  totalMonthlySavings,
+}: {
+  goals: Goal[]
+  baseCurrency: string
+  totalSaved: number
+  totalMonthlySavings: number
+}) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [filter, setFilter] = useState<'active' | 'all' | 'completed'>('active')
@@ -193,11 +203,6 @@ export function GoalsClient({ goals, baseCurrency }: { goals: Goal[]; baseCurren
   }
 
   const activeGoals = goals.filter(isActive)
-  const totalMonthlySavings = activeGoals.reduce(
-    (s, g) => s + goalMonthlyRequired(g.targetAmount, g.currentAmount, new Date(g.deadline)),
-    0
-  )
-  const totalSaved = activeGoals.reduce((s, g) => s + g.currentAmount, 0)
 
   const filtered =
     filter === 'active'

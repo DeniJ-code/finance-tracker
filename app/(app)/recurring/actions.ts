@@ -18,6 +18,7 @@ function parsePaymentFields(formData: FormData) {
 
   if (!name) throw new Error('Name required')
   if (!['expense', 'income', 'subscription'].includes(type)) throw new Error('Invalid type')
+  if (!['active', 'cancelled'].includes(status)) throw new Error('Invalid status')
   if (isNaN(amount) || amount <= 0) throw new Error('Invalid amount')
   if (isNaN(frequencyPerYear) || frequencyPerYear <= 0) throw new Error('Invalid frequency')
 

@@ -25,6 +25,8 @@ function makeFormData(fields: Record<string, string>) {
   return fd
 }
 
+beforeEach(() => jest.clearAllMocks())
+
 const validFields = {
   name: 'Netflix',
   type: 'subscription',

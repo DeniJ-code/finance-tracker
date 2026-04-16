@@ -3,6 +3,7 @@
 import { db } from '@/lib/db'
 import { getSession } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
+import { SUPPORTED_CURRENCIES } from '@/lib/format'
 
 export async function createDailyExpense(formData: FormData) {
   const session = await getSession()
@@ -15,6 +16,7 @@ export async function createDailyExpense(formData: FormData) {
 
   if (isNaN(amount) || amount <= 0) throw new Error('Invalid amount')
   if (!categoryId) throw new Error('Category required')
+  if (!SUPPORTED_CURRENCIES.includes(currency)) throw new Error('Invalid currency')
 
   await db.dailyExpense.create({
     data: { userId: session.userId, amount, currency, categoryId, note, source: 'web' },

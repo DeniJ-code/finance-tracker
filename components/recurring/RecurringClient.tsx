@@ -191,20 +191,20 @@ function PaymentModal({
   )
 }
 
-export function RecurringClient({ payments, baseCurrency }: { payments: Payment[]; baseCurrency: string }) {
+export function RecurringClient({
+  payments,
+  baseCurrency,
+  kpi,
+}: {
+  payments: Payment[]
+  baseCurrency: string
+  kpi: { monthlyExpenses: number; annualExpenses: number; monthlyIncome: number; annualIncome: number }
+}) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [filter, setFilter] = useState<'all' | 'expense' | 'income' | 'subscription'>('all')
   const [modalOpen, setModalOpen] = useState(false)
   const [editTarget, setEditTarget] = useState<Payment | null>(null)
-
-  const active = payments.filter(p => p.status === 'active')
-  const expenses = active.filter(p => p.type !== 'income')
-  const income = active.filter(p => p.type === 'income')
-  const monthlyExp = expenses.reduce((s, p) => s + monthlyAmount(p.amount, p.frequencyPerYear), 0)
-  const annualExp = expenses.reduce((s, p) => s + annualAmount(p.amount, p.frequencyPerYear), 0)
-  const monthlyInc = income.reduce((s, p) => s + monthlyAmount(p.amount, p.frequencyPerYear), 0)
-  const annualInc = income.reduce((s, p) => s + annualAmount(p.amount, p.frequencyPerYear), 0)
 
   const filtered =
     filter === 'all' ? payments : payments.filter(p => p.type === filter)
@@ -261,10 +261,10 @@ export function RecurringClient({ payments, baseCurrency }: { payments: Payment[
       {/* Summary bar */}
       <div className="grid grid-cols-4 gap-3">
         {[
-          { label: 'Annual expenses', value: annualExp },
-          { label: 'Monthly expenses', value: monthlyExp },
-          { label: 'Annual income', value: annualInc },
-          { label: 'Monthly income', value: monthlyInc },
+          { label: 'Annual expenses', value: kpi.annualExpenses },
+          { label: 'Monthly expenses', value: kpi.monthlyExpenses },
+          { label: 'Annual income', value: kpi.annualIncome },
+          { label: 'Monthly income', value: kpi.monthlyIncome },
         ].map(card => (
           <div key={card.label} className="bg-zinc-900 rounded-xl p-4">
             <p className="text-xs text-zinc-500 mb-1">{card.label}</p>
@@ -371,6 +371,7 @@ export function RecurringClient({ payments, baseCurrency }: { payments: Payment[
                   <div className="flex gap-1">
                     <button
                       onClick={() => openEdit(p)}
+                      aria-label={`Edit ${p.name}`}
                       className="p-1 text-zinc-600 hover:text-zinc-300"
                     >
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2">
@@ -380,6 +381,7 @@ export function RecurringClient({ payments, baseCurrency }: { payments: Payment[
                     </button>
                     <button
                       onClick={() => handleDelete(p.id)}
+                      aria-label={`Delete ${p.name}`}
                       disabled={isPending}
                       className="p-1 text-zinc-600 hover:text-red-400"
                     >

@@ -3,6 +3,7 @@
 import { db } from '@/lib/db'
 import { getSession } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
+import { SUPPORTED_CURRENCIES } from '@/lib/format'
 
 function parseGoalFields(formData: FormData) {
   const name = formData.get('name') as string
@@ -16,6 +17,7 @@ function parseGoalFields(formData: FormData) {
 
   if (!name) throw new Error('Name required')
   if (!['short', 'long'].includes(type)) throw new Error('Invalid type')
+  if (!SUPPORTED_CURRENCIES.includes(currency)) throw new Error('Invalid currency')
   if (isNaN(targetAmount) || targetAmount <= 0) throw new Error('Invalid target amount')
   if (isNaN(deadline.getTime())) throw new Error('Invalid deadline')
 
