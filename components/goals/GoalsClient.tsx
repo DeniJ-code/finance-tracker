@@ -222,7 +222,7 @@ export function GoalsClient({
   }
 
   function handleDelete(id: string) {
-    if (!window.confirm('Delete this goal?')) return
+    if (!window.confirm(`Delete "${goals.find(x => x.id === id)?.name ?? 'this goal'}"?`)) return
     startTransition(async () => {
       await deleteGoal(id)
       router.refresh()

@@ -99,7 +99,7 @@ export function DailyClient({
   }
 
   function handleDelete(id: string) {
-    if (!window.confirm('Delete this expense?')) return
+    if (!window.confirm(`Delete "${expenses.find(x => x.id === id)?.note || expenses.find(x => x.id === id)?.category.name || 'this expense'}"?`)) return
     startTransition(async () => {
       await deleteDailyExpense(id)
       router.refresh()
@@ -206,7 +206,7 @@ export function DailyClient({
               type="number"
               step="0.01"
               min="0.01"
-              placeholder="0.00"
+              placeholder="Amount"
               value={amount}
               onChange={e => setAmount(e.target.value)}
               className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-zinc-100 text-2xl font-light text-right focus:outline-none focus:border-indigo-500"

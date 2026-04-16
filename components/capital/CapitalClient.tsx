@@ -17,7 +17,15 @@ type Account = {
 }
 
 const ACCOUNT_TYPES = ['debit', 'savings', 'cash', 'other']
-const COLOR_PRESETS = ['#5a68a8', '#5a8a60', '#a3845a', '#a85a8a', '#8a5a5a', '#6366f1', '#9ca3af']
+const COLOR_PRESETS: { value: string; label: string }[] = [
+  { value: '#5a68a8', label: 'Blue' },
+  { value: '#5a8a60', label: 'Green' },
+  { value: '#a3845a', label: 'Brown' },
+  { value: '#a85a8a', label: 'Purple' },
+  { value: '#8a5a5a', label: 'Red' },
+  { value: '#6366f1', label: 'Indigo' },
+  { value: '#9ca3af', label: 'Gray' },
+]
 
 function AccountModal({
   initialData,
@@ -32,7 +40,7 @@ function AccountModal({
   const [type, setType] = useState(initialData?.type ?? 'debit')
   const [balance, setBalance] = useState(String(initialData?.balance ?? '0'))
   const [currency, setCurrency] = useState(initialData?.currency ?? 'EUR')
-  const [color, setColor] = useState(initialData?.color ?? '#5a68a8')
+  const [color, setColor] = useState(initialData?.color ?? COLOR_PRESETS[0].value)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -102,14 +110,14 @@ function AccountModal({
             <div role="group" aria-labelledby="am-color-label" className="flex gap-2 flex-wrap">
               {COLOR_PRESETS.map(c => (
                 <button
-                  key={c}
+                  key={c.value}
                   type="button"
-                  onClick={() => setColor(c)}
-                  aria-label={`Select color ${c}`}
+                  onClick={() => setColor(c.value)}
+                  aria-label={`Select ${c.label}`}
                   className="w-6 h-6 rounded-full border-2 transition-all"
                   style={{
-                    backgroundColor: c,
-                    borderColor: color === c ? 'white' : 'transparent',
+                    backgroundColor: c.value,
+                    borderColor: color === c.value ? 'white' : 'transparent',
                   }}
                 />
               ))}
@@ -166,7 +174,7 @@ export function CapitalClient({
   }
 
   function handleDelete(id: string) {
-    if (!window.confirm('Delete this account?')) return
+    if (!window.confirm(`Delete "${accounts.find(x => x.id === id)?.name ?? 'this account'}"?`)) return
     startTransition(async () => {
       await deleteAccount(id)
       router.refresh()

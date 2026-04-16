@@ -143,7 +143,7 @@ export default async function DashboardPage() {
             </Link>
           </div>
           {upcoming.length === 0 && (
-            <p className="text-xs text-zinc-600">No upcoming payments with dates set.</p>
+            <p className="text-xs text-zinc-600">No upcoming payments. Set a date on a payment to see it here.</p>
           )}
           {upcoming.map(p => {
             const daysUntil = Math.ceil(
@@ -155,7 +155,7 @@ export default async function DashboardPage() {
                   <p className="text-sm text-zinc-200">{p.name}</p>
                   <p className="text-xs text-zinc-500">
                     {formatDate(p.nextPaymentDate!)} ·{' '}
-                    {daysUntil < 0 ? 'overdue' : daysUntil === 0 ? 'today' : `in ${daysUntil}d`}
+                    {daysUntil < 0 ? 'overdue' : daysUntil === 0 ? 'today' : `in ${daysUntil} day${daysUntil === 1 ? '' : 's'}`}
                   </p>
                 </div>
                 <p className="text-sm font-medium text-zinc-300">

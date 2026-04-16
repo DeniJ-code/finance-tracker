@@ -1,8 +1,7 @@
 import { db } from '@/lib/db'
 import { getSession } from '@/lib/auth'
 import { updateBaseCurrency } from './actions'
-
-const CURRENCIES = ['EUR', 'USD', 'RUB', 'GBP', 'CHF']
+import { SUPPORTED_CURRENCIES } from '@/lib/format'
 
 export default async function SettingsPage() {
   const session = await getSession()
@@ -23,7 +22,7 @@ export default async function SettingsPage() {
         <h2 className="text-sm font-medium text-zinc-400 mb-3">Основная валюта</h2>
         <form action={updateBaseCurrency}>
           <div className="flex gap-2 flex-wrap mb-3">
-            {CURRENCIES.map(c => (
+            {SUPPORTED_CURRENCIES.map(c => (
               <label key={c} className="cursor-pointer">
                 <input type="radio" name="currency" value={c} defaultChecked={user?.baseCurrency === c} className="sr-only" />
                 <span className={`px-3 py-1.5 rounded-md text-xs font-medium border transition-colors ${

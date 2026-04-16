@@ -220,7 +220,7 @@ export function RecurringClient({
   }
 
   function handleDelete(id: string) {
-    if (!window.confirm('Delete this payment?')) return
+    if (!window.confirm(`Delete "${payments.find(x => x.id === id)?.name ?? 'this payment'}"?`)) return
     startTransition(async () => {
       await deleteRecurringPayment(id)
       router.refresh()
@@ -297,7 +297,7 @@ export function RecurringClient({
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-zinc-800">
-              {['Type', 'Name', 'Amount', 'Frequency', 'Annual', 'Monthly', 'Status', 'Next date', ''].map(
+              {['Type', 'Name', 'Amount', 'Frequency', 'Annual', 'Monthly', 'Status', 'Next payment date', ''].map(
                 h => (
                   <th key={h} className="text-left px-4 py-3 text-xs font-medium text-zinc-500">
                     {h}
