@@ -7,10 +7,16 @@ export default async function RecurringPage() {
   const session = await getSession()
   if (!session.userId) redirect('/auth')
 
-  const rawPayments = await db.recurringPayment.findMany({
-    where: { userId: session.userId },
-    orderBy: { createdAt: 'desc' },
-  })
+  const [rawPayments, user] = await Promise.all([
+    db.recurringPayment.findMany({
+      where: { userId: session.userId },
+      orderBy: { createdAt: 'desc' },
+    }),
+    db.user.findUnique({
+      where: { id: session.userId },
+      select: { baseCurrency: true },
+    }),
+  ])
 
   const payments = rawPayments.map(p => ({
     id: p.id,
@@ -25,5 +31,5 @@ export default async function RecurringPage() {
     notes: p.notes,
   }))
 
-  return <RecurringClient payments={payments} />
+  return <RecurringClient payments={payments} baseCurrency={user?.baseCurrency ?? 'EUR'} />
 }

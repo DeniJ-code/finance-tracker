@@ -61,6 +61,18 @@ describe('createRecurringPayment', () => {
       createRecurringPayment(makeFormData({ ...validFields, type: 'invalid' }))
     ).rejects.toThrow('Invalid type')
   })
+
+  it('throws for invalid amount', async () => {
+    await expect(
+      createRecurringPayment(makeFormData({ ...validFields, amount: '0' }))
+    ).rejects.toThrow('Invalid amount')
+  })
+
+  it('throws for invalid frequency', async () => {
+    await expect(
+      createRecurringPayment(makeFormData({ ...validFields, frequencyPerYear: '0' }))
+    ).rejects.toThrow('Invalid frequency')
+  })
 })
 
 describe('updateRecurringPayment', () => {

@@ -7,7 +7,7 @@ import {
   updateRecurringPayment,
   deleteRecurringPayment,
 } from '@/app/(app)/recurring/actions'
-import { formatCurrency, formatDate } from '@/lib/format'
+import { formatCurrency, formatDate, SUPPORTED_CURRENCIES } from '@/lib/format'
 import { monthlyAmount, annualAmount } from '@/lib/calculations'
 
 type Payment = {
@@ -37,8 +37,6 @@ const FREQ_OPTIONS = [
   { label: 'Bi-weekly (26×)', value: '26' },
   { label: 'Weekly (52×)', value: '52' },
 ]
-
-const CURRENCIES = ['EUR', 'USD', 'RUB', 'GBP', 'CHF']
 
 function PaymentModal({
   initialData,
@@ -97,27 +95,28 @@ function PaymentModal({
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
             <div className="col-span-2">
-              <label className={labelCls}>Name</label>
-              <input className={inputCls} value={name} onChange={e => setName(e.target.value)} required />
+              <label htmlFor="pm-name" className={labelCls}>Name</label>
+              <input id="pm-name" className={inputCls} value={name} onChange={e => setName(e.target.value)} required />
             </div>
             <div>
-              <label className={labelCls}>Type</label>
-              <select className={inputCls} value={type} onChange={e => setType(e.target.value)}>
+              <label htmlFor="pm-type" className={labelCls}>Type</label>
+              <select id="pm-type" className={inputCls} value={type} onChange={e => setType(e.target.value)}>
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
                 <option value="subscription">Subscription</option>
               </select>
             </div>
             <div>
-              <label className={labelCls}>Status</label>
-              <select className={inputCls} value={status} onChange={e => setStatus(e.target.value)}>
+              <label htmlFor="pm-status" className={labelCls}>Status</label>
+              <select id="pm-status" className={inputCls} value={status} onChange={e => setStatus(e.target.value)}>
                 <option value="active">Active</option>
                 <option value="cancelled">Cancelled</option>
               </select>
             </div>
             <div>
-              <label className={labelCls}>Amount</label>
+              <label htmlFor="pm-amount" className={labelCls}>Amount</label>
               <input
+                id="pm-amount"
                 className={inputCls}
                 type="number"
                 step="0.01"
@@ -128,20 +127,21 @@ function PaymentModal({
               />
             </div>
             <div>
-              <label className={labelCls}>Currency</label>
-              <select className={inputCls} value={currency} onChange={e => setCurrency(e.target.value)}>
-                {CURRENCIES.map(c => <option key={c}>{c}</option>)}
+              <label htmlFor="pm-currency" className={labelCls}>Currency</label>
+              <select id="pm-currency" className={inputCls} value={currency} onChange={e => setCurrency(e.target.value)}>
+                {SUPPORTED_CURRENCIES.map(c => <option key={c}>{c}</option>)}
               </select>
             </div>
             <div>
-              <label className={labelCls}>Frequency</label>
-              <select className={inputCls} value={freq} onChange={e => setFreq(e.target.value)}>
+              <label htmlFor="pm-frequency" className={labelCls}>Frequency</label>
+              <select id="pm-frequency" className={inputCls} value={freq} onChange={e => setFreq(e.target.value)}>
                 {FREQ_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
               </select>
             </div>
             <div>
-              <label className={labelCls}>Category</label>
+              <label htmlFor="pm-category" className={labelCls}>Category</label>
               <input
+                id="pm-category"
                 className={inputCls}
                 placeholder="e.g. Software"
                 value={category}
@@ -149,8 +149,9 @@ function PaymentModal({
               />
             </div>
             <div className="col-span-2">
-              <label className={labelCls}>Next payment date</label>
+              <label htmlFor="pm-nextPaymentDate" className={labelCls}>Next payment date</label>
               <input
+                id="pm-nextPaymentDate"
                 className={inputCls}
                 type="date"
                 value={nextDate}
@@ -158,8 +159,9 @@ function PaymentModal({
               />
             </div>
             <div className="col-span-2">
-              <label className={labelCls}>Notes</label>
+              <label htmlFor="pm-notes" className={labelCls}>Notes</label>
               <textarea
+                id="pm-notes"
                 className={inputCls}
                 rows={2}
                 value={notes}
@@ -189,7 +191,7 @@ function PaymentModal({
   )
 }
 
-export function RecurringClient({ payments }: { payments: Payment[] }) {
+export function RecurringClient({ payments, baseCurrency }: { payments: Payment[]; baseCurrency: string }) {
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [filter, setFilter] = useState<'all' | 'expense' | 'income' | 'subscription'>('all')
@@ -267,7 +269,7 @@ export function RecurringClient({ payments }: { payments: Payment[] }) {
           <div key={card.label} className="bg-zinc-900 rounded-xl p-4">
             <p className="text-xs text-zinc-500 mb-1">{card.label}</p>
             <p className="text-lg font-semibold text-zinc-100">
-              {formatCurrency(card.value, 'EUR')}
+              {formatCurrency(card.value, baseCurrency)}
             </p>
           </div>
         ))}
