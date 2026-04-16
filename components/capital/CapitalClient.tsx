@@ -210,7 +210,7 @@ export function CapitalClient({
       {accounts.length === 0 ? (
         <p className="text-zinc-500 text-sm">No accounts yet. Add one to track your capital.</p>
       ) : (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {accounts.map(a => (
             <div
               key={a.id}

@@ -17,7 +17,7 @@ export default async function CapitalPage() {
   ])
 
   const baseCurrency = user?.baseCurrency ?? 'EUR'
-  const rates = await fetchRates(baseCurrency)
+  const rates = rawAccounts.length > 0 ? await fetchRates(baseCurrency) : {}
 
   const accounts = rawAccounts.map(a => ({
     id: a.id,
