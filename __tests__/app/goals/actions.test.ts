@@ -15,6 +15,8 @@ jest.mock('next/cache', () => ({ revalidatePath: jest.fn() }))
 import { createGoal, updateGoal, deleteGoal } from '@/app/(app)/goals/actions'
 import { db } from '@/lib/db'
 
+beforeEach(() => jest.clearAllMocks())
+
 function makeFormData(fields: Record<string, string>) {
   const fd = new FormData()
   Object.entries(fields).forEach(([k, v]) => fd.append(k, v))
