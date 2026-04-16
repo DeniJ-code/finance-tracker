@@ -15,7 +15,7 @@ export default async function DashboardPage() {
   const [rawAccounts, rawPayments, rawGoals, rawExpenses, user] = await Promise.all([
     db.account.findMany({ where: { userId } }),
     db.recurringPayment.findMany({ where: { userId, status: 'active' } }),
-    db.goal.findMany({ where: { userId }, orderBy: { createdAt: 'desc' } }),
+    db.goal.findMany({ where: { userId }, orderBy: { createdAt: 'desc' }, take: 20 }),
     db.dailyExpense.findMany({
       where: {
         userId,
@@ -155,7 +155,7 @@ export default async function DashboardPage() {
                   <p className="text-sm text-zinc-200">{p.name}</p>
                   <p className="text-xs text-zinc-500">
                     {formatDate(p.nextPaymentDate!)} ·{' '}
-                    {daysUntil <= 0 ? 'today' : `in ${daysUntil}d`}
+                    {daysUntil < 0 ? 'overdue' : daysUntil === 0 ? 'today' : `in ${daysUntil}d`}
                   </p>
                 </div>
                 <p className="text-sm font-medium text-zinc-300">
@@ -175,7 +175,7 @@ export default async function DashboardPage() {
             href="/daily"
             className="flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300"
           >
-            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M12 5v14M5 12h14" />
             </svg>
             Add expense
@@ -206,7 +206,7 @@ export default async function DashboardPage() {
             Total:{' '}
             <span className="text-zinc-400">
               {formatCurrency(
-                todayExpenses.reduce((s, e) => s + e.amount, 0),
+                todayExpenses.reduce((s, e) => s + convertToBase(e.amount, e.currency, baseCurrency, rates), 0),
                 baseCurrency
               )}
             </span>
