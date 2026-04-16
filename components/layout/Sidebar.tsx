@@ -87,7 +87,7 @@ export function Sidebar() {
           <Link
             key={item.href}
             href={item.href}
-            className={`flex items-center gap-2 px-2.5 py-2 rounded-md text-xs transition-colors ${
+            className={`flex items-center gap-2 px-2.5 py-2 rounded-md text-xs transition-colors active:scale-[0.97] ${
               active
                 ? 'bg-indigo-500/30 text-white font-semibold'
                 : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
@@ -102,7 +102,7 @@ export function Sidebar() {
       <div className="mt-auto">
         <Link
           href="/settings"
-          className={`flex items-center gap-2 px-2.5 py-2 rounded-md text-xs transition-colors ${
+          className={`flex items-center gap-2 px-2.5 py-2 rounded-md text-xs transition-colors active:scale-[0.97] ${
             pathname.startsWith('/settings')
               ? 'bg-indigo-500/30 text-white font-semibold'
               : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
@@ -115,7 +115,7 @@ export function Sidebar() {
         </Link>
         <button
           onClick={handleLogout}
-          className="w-full flex items-center gap-2 px-2.5 py-2 rounded-md text-xs text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 transition-colors"
+          className="w-full flex items-center gap-2 px-2.5 py-2 rounded-md text-xs text-zinc-500 hover:text-zinc-300 hover:bg-zinc-800 transition-colors active:scale-[0.97]"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M6 14H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h3"/><polyline points="11,11 14,8 11,5"/><line x1="14" y1="8" x2="6" y2="8"/>

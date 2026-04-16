@@ -21,7 +21,22 @@
       "Bash(git branch *)",
       "Bash(npx tsc *)",
       "Bash(node -e ' *)",
-      "Bash(node -e \"const pkg = require\\('/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/package.json'\\); console.log\\('next:', pkg.dependencies.next\\)\")"
+      "Bash(node -e \"const pkg = require\\('/home/deni/Schreibtisch/Vibecoding/Finance-Tracker/package.json'\\); console.log\\('next:', pkg.dependencies.next\\)\")",
+      "Bash(git -C /home/deni/Schreibtisch/Vibecoding/Finance-Tracker add components/capital/CapitalClient.tsx)",
+      "Bash(git -C /home/deni/Schreibtisch/Vibecoding/Finance-Tracker commit -m \"fix: associate color picker label with button group via aria-labelledby\")",
+      "Bash(git -C /home/deni/Schreibtisch/Vibecoding/Finance-Tracker diff d543d05..cc9b2a8 -- app/\\\\\\(app\\\\\\)/dashboard/page.tsx)",
+      "Bash(git -C /home/deni/Schreibtisch/Vibecoding/Finance-Tracker add \"app/\\(app\\)/dashboard/page.tsx\")",
+      "Bash(git -C /home/deni/Schreibtisch/Vibecoding/Finance-Tracker commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh repo *)",
+      "Bash(git remote *)",
+      "Bash(ls -la .env*)",
+      "Bash(psql --version)",
+      "Bash(docker --version)",
+      "Bash(docker run *)",
+      "Bash(docker exec *)",
+      "Bash(npx tsx *)",
+      "Bash(echo \"PID: $!\")"
     ]
   }
 }

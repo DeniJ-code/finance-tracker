@@ -173,14 +173,14 @@ function PaymentModal({
             <button
               type="submit"
               disabled={isPending}
-              className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-sm font-medium rounded-lg py-2"
+              className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 active:scale-[0.96] text-white text-sm font-medium rounded-lg py-2 transition-[transform,opacity]"
             >
               {isPending ? 'Saving...' : initialData ? 'Update' : 'Add payment'}
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-sm font-medium rounded-lg py-2"
+              className="flex-1 bg-zinc-800 hover:bg-zinc-700 active:scale-[0.96] text-zinc-300 text-sm font-medium rounded-lg py-2 transition-[transform,background-color]"
             >
               Cancel
             </button>
@@ -246,10 +246,10 @@ export function RecurringClient({
 
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-zinc-100">Regular Payments</h1>
+        <h1 className="text-xl font-semibold text-zinc-100 tabular-nums">Regular Payments</h1>
         <button
           onClick={openAdd}
-          className="flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium rounded-lg px-3 py-1.5"
+          className="flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.96] text-white text-sm font-medium rounded-lg px-3 py-1.5 transition-[transform,opacity]"
         >
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M12 5v14M5 12h14" />
@@ -268,7 +268,7 @@ export function RecurringClient({
         ].map(card => (
           <div key={card.label} className="bg-zinc-900 rounded-xl p-4">
             <p className="text-xs text-zinc-500 mb-1">{card.label}</p>
-            <p className="text-lg font-semibold text-zinc-100">
+            <p className="text-lg font-semibold text-zinc-100 tabular-nums">
               {formatCurrency(card.value, baseCurrency)}
             </p>
           </div>
@@ -372,7 +372,7 @@ export function RecurringClient({
                     <button
                       onClick={() => openEdit(p)}
                       aria-label={`Edit ${p.name}`}
-                      className="p-1 text-zinc-600 hover:text-zinc-300"
+                      className="w-9 h-9 flex items-center justify-center text-zinc-600 hover:text-zinc-300 transition-colors rounded"
                     >
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -383,7 +383,7 @@ export function RecurringClient({
                       onClick={() => handleDelete(p.id)}
                       aria-label={`Delete ${p.name}`}
                       disabled={isPending}
-                      className="p-1 text-zinc-600 hover:text-red-400"
+                      className="w-9 h-9 flex items-center justify-center text-zinc-600 hover:text-red-400 transition-colors rounded"
                     >
                       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2">
                         <polyline points="3 6 5 6 21 6" />

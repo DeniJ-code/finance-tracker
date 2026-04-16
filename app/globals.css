@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Font smoothing — crisper text on all platforms */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Tabular numbers — prevent layout shift on dynamic currency values */
+  [data-numeric],
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Balanced headings — no orphans */
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  /* Body text — avoid single-word last lines */
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  /* Scale on press — tactile button feedback */
+  .press {
+    @apply transition-transform duration-100 active:scale-[0.96];
+  }
+
+  /* Hit area expansion for small icon buttons */
+  .hit-area {
+    @apply relative;
+  }
+  .hit-area::after {
+    content: '';
+    @apply absolute inset-0 -m-[13px];
+  }
+}

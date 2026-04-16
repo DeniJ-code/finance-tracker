@@ -93,7 +93,7 @@ export default async function DashboardPage() {
         {kpiCards.map(card => (
           <div key={card.label} className="bg-zinc-900 rounded-xl p-4">
             <p className="text-xs text-zinc-500 mb-1">{card.label}</p>
-            <p className="text-xl font-semibold text-zinc-100">{card.value}</p>
+            <p className="text-xl font-semibold text-zinc-100 tabular-nums">{card.value}</p>
           </div>
         ))}
       </div>
