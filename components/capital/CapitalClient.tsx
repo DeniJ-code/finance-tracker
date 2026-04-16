@@ -98,8 +98,8 @@ function AccountModal({
             />
           </div>
           <div>
-            <label className={labelCls}>Color</label>
-            <div className="flex gap-2 flex-wrap">
+            <label id="am-color-label" className={labelCls}>Color</label>
+            <div role="group" aria-labelledby="am-color-label" className="flex gap-2 flex-wrap">
               {COLOR_PRESETS.map(c => (
                 <button
                   key={c}
