@@ -43,11 +43,11 @@ export default async function DashboardPage() {
   const expensePayments = rawPayments.filter(p => p.type !== 'income')
   const incomePayments = rawPayments.filter(p => p.type === 'income')
   const monthlyExpenses = expensePayments.reduce(
-    (s, p) => s + monthlyAmount(Number(p.amount), p.frequencyPerYear),
+    (s, p) => s + convertToBase(monthlyAmount(Number(p.amount), p.frequencyPerYear), p.currency, baseCurrency, rates),
     0
   )
   const monthlyIncome = incomePayments.reduce(
-    (s, p) => s + monthlyAmount(Number(p.amount), p.frequencyPerYear),
+    (s, p) => s + convertToBase(monthlyAmount(Number(p.amount), p.frequencyPerYear), p.currency, baseCurrency, rates),
     0
   )
 
