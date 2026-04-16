@@ -58,8 +58,8 @@ function AccountModal({
   const labelCls = 'block text-xs text-zinc-400 mb-1'
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-zinc-900 rounded-xl p-6 w-full max-w-md">
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-zinc-900 rounded-xl p-6 w-full max-w-md ring-1 ring-white/[0.08]">
         <h2 className="text-base font-semibold text-zinc-100 mb-4">
           {initialData ? 'Edit account' : 'Add account'}
         </h2>
@@ -184,10 +184,10 @@ export function CapitalClient({
       )}
 
       {/* Total capital card */}
-      <div className="bg-zinc-900 rounded-xl p-5 flex items-center justify-between">
+      <div className="bg-zinc-900 rounded-xl p-5 flex items-center justify-between ring-1 ring-white/[0.06]">
         <div>
           <p className="text-xs text-zinc-500 mb-1">Total capital</p>
-          <p className="text-3xl font-semibold text-zinc-100 tabular-nums">
+          <p className="text-3xl font-semibold text-zinc-100 tabular-nums tracking-tight">
             {formatCurrency(totalCapital, baseCurrency)}
           </p>
           <p className="text-xs text-zinc-600 mt-1">
@@ -214,7 +214,7 @@ export function CapitalClient({
           {accounts.map(a => (
             <div
               key={a.id}
-              className="bg-zinc-900 rounded-xl overflow-hidden border-t-4"
+              className="bg-zinc-900 rounded-xl overflow-hidden border-t-4 ring-1 ring-white/[0.06]"
               style={{ borderTopColor: a.color }}
             >
               <div className="p-4">
@@ -261,7 +261,7 @@ export function CapitalClient({
 
       {/* Distribution bar */}
       {accounts.length > 1 && (
-        <div className="bg-zinc-900 rounded-xl p-4 space-y-3">
+        <div className="bg-zinc-900 rounded-xl p-4 space-y-3 ring-1 ring-white/[0.06]">
           <p className="text-xs font-medium text-zinc-400">Distribution</p>
           <div className="h-3 rounded-full overflow-hidden flex">
             {accounts.map(a => {

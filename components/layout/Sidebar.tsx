@@ -72,13 +72,13 @@ export function Sidebar() {
   }
 
   return (
-    <aside className="w-[180px] min-h-screen bg-zinc-900 flex flex-col gap-0.5 px-3 py-4 flex-shrink-0">
-      <div className="flex items-center gap-2 px-2 mb-4">
+    <aside className="w-[180px] min-h-screen bg-zinc-900 border-r border-white/[0.04] flex flex-col gap-0.5 px-3 py-4 flex-shrink-0">
+      <div className="flex items-center gap-2 px-2 mb-4 pb-4 border-b border-white/[0.06]">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.5">
           <rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/>
           <rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/>
         </svg>
-        <span className="text-white text-sm font-bold">Finance</span>
+        <span className="text-white text-sm font-bold tracking-tight">Finance</span>
       </div>
 
       {NAV_ITEMS.map(item => {
@@ -87,10 +87,10 @@ export function Sidebar() {
           <Link
             key={item.href}
             href={item.href}
-            className={`flex items-center gap-2 px-2.5 py-2 rounded-md text-xs transition-colors active:scale-[0.97] ${
+            className={`flex items-center gap-2 py-2 rounded-md text-xs transition-colors active:scale-[0.97] ${
               active
-                ? 'bg-indigo-500/30 text-white font-semibold'
-                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
+                ? 'bg-indigo-500/15 text-white font-semibold border-l-2 border-indigo-400 pl-2 pr-2.5'
+                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 px-2.5'
             }`}
           >
             {item.icon}
@@ -100,12 +100,13 @@ export function Sidebar() {
       })}
 
       <div className="mt-auto">
+        <div className="h-px bg-white/[0.06] mx-1 mb-2" />
         <Link
           href="/settings"
-          className={`flex items-center gap-2 px-2.5 py-2 rounded-md text-xs transition-colors active:scale-[0.97] ${
+          className={`flex items-center gap-2 py-2 rounded-md text-xs transition-colors active:scale-[0.97] ${
             pathname.startsWith('/settings')
-              ? 'bg-indigo-500/30 text-white font-semibold'
-              : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
+              ? 'bg-indigo-500/15 text-white font-semibold border-l-2 border-indigo-400 pl-2 pr-2.5'
+              : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800 px-2.5'
           }`}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">

@@ -91,9 +91,9 @@ export default async function DashboardPage() {
       {/* KPI row */}
       <div className="grid grid-cols-4 gap-3">
         {kpiCards.map(card => (
-          <div key={card.label} className="bg-zinc-900 rounded-xl p-4">
-            <p className="text-xs text-zinc-500 mb-1">{card.label}</p>
-            <p className="text-xl font-semibold text-zinc-100 tabular-nums">{card.value}</p>
+          <div key={card.label} className="bg-zinc-900 rounded-xl p-4 ring-1 ring-white/[0.06]">
+            <p className="text-xs text-zinc-500 mb-1.5">{card.label}</p>
+            <p className="text-2xl font-semibold text-zinc-100 tabular-nums tracking-tight">{card.value}</p>
           </div>
         ))}
       </div>
@@ -101,7 +101,7 @@ export default async function DashboardPage() {
       {/* Middle row: goals + upcoming */}
       <div className="grid grid-cols-2 gap-4">
         {/* Goal progress */}
-        <div className="bg-zinc-900 rounded-xl p-4 space-y-3">
+        <div className="bg-zinc-900 rounded-xl p-4 space-y-3 ring-1 ring-white/[0.06]">
           <div className="flex justify-between items-center">
             <p className="text-sm font-medium text-zinc-200">Goals</p>
             <Link href="/goals" className="text-xs text-indigo-400 hover:text-indigo-300">
@@ -135,7 +135,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Upcoming payments */}
-        <div className="bg-zinc-900 rounded-xl p-4 space-y-3">
+        <div className="bg-zinc-900 rounded-xl p-4 space-y-3 ring-1 ring-white/[0.06]">
           <div className="flex justify-between items-center">
             <p className="text-sm font-medium text-zinc-200">Upcoming payments</p>
             <Link href="/recurring" className="text-xs text-indigo-400 hover:text-indigo-300">
@@ -168,7 +168,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Recent daily expenses */}
-      <div className="bg-zinc-900 rounded-xl p-4 space-y-3">
+      <div className="bg-zinc-900 rounded-xl p-4 space-y-3 ring-1 ring-white/[0.06]">
         <div className="flex justify-between items-center">
           <p className="text-sm font-medium text-zinc-200">Today</p>
           <Link

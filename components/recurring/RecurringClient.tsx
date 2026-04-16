@@ -87,8 +87,8 @@ function PaymentModal({
   const labelCls = 'block text-xs text-zinc-400 mb-1'
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-zinc-900 rounded-xl p-6 w-full max-w-lg">
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-zinc-900 rounded-xl p-6 w-full max-w-lg ring-1 ring-white/[0.08]">
         <h2 className="text-base font-semibold text-zinc-100 mb-4">
           {initialData ? 'Edit payment' : 'Add payment'}
         </h2>
@@ -266,9 +266,9 @@ export function RecurringClient({
           { label: 'Annual income', value: kpi.annualIncome },
           { label: 'Monthly income', value: kpi.monthlyIncome },
         ].map(card => (
-          <div key={card.label} className="bg-zinc-900 rounded-xl p-4">
-            <p className="text-xs text-zinc-500 mb-1">{card.label}</p>
-            <p className="text-lg font-semibold text-zinc-100 tabular-nums">
+          <div key={card.label} className="bg-zinc-900 rounded-xl p-4 ring-1 ring-white/[0.06]">
+            <p className="text-xs text-zinc-500 mb-1.5">{card.label}</p>
+            <p className="text-xl font-semibold text-zinc-100 tabular-nums tracking-tight">
               {formatCurrency(card.value, baseCurrency)}
             </p>
           </div>
@@ -293,7 +293,7 @@ export function RecurringClient({
       </div>
 
       {/* Table */}
-      <div className="bg-zinc-900 rounded-xl overflow-hidden">
+      <div className="bg-zinc-900 rounded-xl overflow-hidden ring-1 ring-white/[0.06]">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-zinc-800">

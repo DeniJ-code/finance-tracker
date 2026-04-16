@@ -72,8 +72,8 @@ function GoalModal({
   const labelCls = 'block text-xs text-zinc-400 mb-1'
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-zinc-900 rounded-xl p-6 w-full max-w-lg">
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-zinc-900 rounded-xl p-6 w-full max-w-lg ring-1 ring-white/[0.08]">
         <h2 className="text-base font-semibold text-zinc-100 mb-4">
           {initialData ? 'Edit goal' : 'Add goal'}
         </h2>
@@ -266,9 +266,9 @@ export function GoalsClient({
           { label: 'Monthly savings needed', value: formatCurrency(totalMonthlySavings, baseCurrency) },
           { label: 'Total saved', value: formatCurrency(totalSaved, baseCurrency) },
         ].map(c => (
-          <div key={c.label} className="bg-zinc-900 rounded-xl p-4">
-            <p className="text-xs text-zinc-500 mb-1">{c.label}</p>
-            <p className="text-lg font-semibold text-zinc-100 tabular-nums">{c.value}</p>
+          <div key={c.label} className="bg-zinc-900 rounded-xl p-4 ring-1 ring-white/[0.06]">
+            <p className="text-xs text-zinc-500 mb-1.5">{c.label}</p>
+            <p className="text-xl font-semibold text-zinc-100 tabular-nums tracking-tight">{c.value}</p>
           </div>
         ))}
       </div>
@@ -304,7 +304,7 @@ export function GoalsClient({
           return (
             <div
               key={g.id}
-              className="bg-zinc-900 rounded-xl p-4 border-l-4"
+              className="bg-zinc-900 rounded-xl p-4 border-l-4 ring-1 ring-white/[0.06]"
               style={{ borderLeftColor: accent }}
             >
               <div className="flex justify-between items-start mb-1">

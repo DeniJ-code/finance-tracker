@@ -200,7 +200,7 @@ export function DailyClient({
         {/* Right: quick-add + breakdown */}
         <div className="space-y-5 overflow-y-auto">
           {/* Quick-add form */}
-          <form onSubmit={handleSubmit} className="bg-zinc-900 rounded-xl p-4 space-y-3">
+          <form onSubmit={handleSubmit} className="bg-zinc-900 rounded-xl p-4 space-y-3 ring-1 ring-white/[0.06]">
             <p className="text-xs font-medium text-zinc-400 tracking-wide">Add expense</p>
             <input
               type="number"
@@ -250,7 +250,7 @@ export function DailyClient({
 
           {/* Category breakdown */}
           {breakdown.length > 0 && (
-            <div className="bg-zinc-900 rounded-xl p-4 space-y-2">
+            <div className="bg-zinc-900 rounded-xl p-4 space-y-2 ring-1 ring-white/[0.06]">
               <p className="text-xs font-medium text-zinc-400">This month</p>
               {breakdown.map(cat => (
                 <div key={cat.id} className="space-y-0.5">
