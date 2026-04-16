@@ -3,11 +3,11 @@
 import { db } from '@/lib/db'
 import { getSession } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
+import { SUPPORTED_CURRENCIES } from '@/lib/format'
 
 export async function updateBaseCurrency(formData: FormData) {
   const currency = formData.get('currency') as string
-  const SUPPORTED = ['EUR', 'USD', 'RUB', 'GBP', 'CHF']
-  if (!SUPPORTED.includes(currency)) throw new Error('Unsupported currency')
+  if (!SUPPORTED_CURRENCIES.includes(currency)) throw new Error('Unsupported currency')
 
   const session = await getSession()
   if (!session.userId) throw new Error('Not authenticated')
