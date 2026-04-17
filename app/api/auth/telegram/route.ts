@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
 
   const session = await getSession()
   session.userId = user.id
-  session.telegramId = Number(user.telegramId)
   session.telegramUsername = user.telegramUsername ?? undefined
   await session.save()
 

@@ -1,8 +1,7 @@
 import { SessionOptions } from 'iron-session'
 
 export interface SessionData {
-  userId: string
-  telegramId: number
+  userId?: string
   telegramUsername?: string
 }
 

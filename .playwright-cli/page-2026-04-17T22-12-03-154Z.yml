@@ -1,0 +1,182 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e5]
+        - generic [ref=e10]: Finance
+      - link "Dashboard" [ref=e11] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e12]
+        - text: Dashboard
+      - link "Daily" [ref=e17] [cursor=pointer]:
+        - /url: /daily
+        - img [ref=e18]
+        - text: Daily
+      - link "Recurring" [ref=e21] [cursor=pointer]:
+        - /url: /recurring
+        - img [ref=e22]
+        - text: Recurring
+      - link "Goals" [ref=e26] [cursor=pointer]:
+        - /url: /goals
+        - img [ref=e27]
+        - text: Goals
+      - link "Capital" [ref=e30] [cursor=pointer]:
+        - /url: /capital
+        - img [ref=e31]
+        - text: Capital
+      - link "Investments" [ref=e34] [cursor=pointer]:
+        - /url: /investments
+        - img [ref=e35]
+        - text: Investments
+      - generic [ref=e37]:
+        - link "Settings" [ref=e39] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e40]
+          - text: Settings
+        - button "Log out" [ref=e43] [cursor=pointer]:
+          - img [ref=e44]
+          - text: Log out
+    - main [ref=e47]:
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "Daily Expenses" [level=1] [ref=e50]
+          - generic [ref=e51]:
+            - button "Previous month" [ref=e52] [cursor=pointer]:
+              - img [ref=e53]
+            - generic [ref=e55]: April 2026
+            - button "Next month" [ref=e56] [cursor=pointer]:
+              - img [ref=e57]
+            - generic [ref=e59]: "Total: €234.19"
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - generic [ref=e64]: Thu 16 April
+                - generic [ref=e65]: €32.30
+              - generic [ref=e66]:
+                - generic [ref=e67]:
+                  - generic: Magnesium
+                  - generic [ref=e69]: Health
+                  - generic [ref=e70]: 14:29
+                  - generic [ref=e71]: €12.50
+                  - button [ref=e72] [cursor=pointer]:
+                    - img [ref=e73]
+                - generic [ref=e75]:
+                  - generic: Lunch at café
+                  - generic [ref=e77]: Food
+                  - generic [ref=e78]: 12:00
+                  - generic [ref=e79]: €12.50
+                  - button [ref=e80] [cursor=pointer]:
+                    - img [ref=e81]
+                - generic [ref=e83]:
+                  - generic: Coffee
+                  - generic [ref=e85]: Food
+                  - generic [ref=e86]: 09:00
+                  - generic [ref=e87]: €4.50
+                  - button [ref=e88] [cursor=pointer]:
+                    - img [ref=e89]
+                - generic [ref=e91]:
+                  - generic: Metro ticket
+                  - generic [ref=e93]: Transport
+                  - generic [ref=e94]: 08:00
+                  - generic [ref=e95]: €2.80
+                  - button [ref=e96] [cursor=pointer]:
+                    - img [ref=e97]
+            - generic [ref=e99]:
+              - generic [ref=e100]:
+                - generic [ref=e101]: Wed 15 April
+                - generic [ref=e102]: €121.20
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - generic: Dinner
+                  - generic [ref=e106]: Food
+                  - generic [ref=e107]: 19:00
+                  - generic [ref=e108]: €18.90
+                  - button [ref=e109] [cursor=pointer]:
+                    - img [ref=e110]
+                - generic [ref=e112]:
+                  - generic: Pharmacy
+                  - generic [ref=e114]: Health
+                  - generic [ref=e115]: 16:00
+                  - generic [ref=e116]: €35.00
+                  - button [ref=e117] [cursor=pointer]:
+                    - img [ref=e118]
+                - generic [ref=e120]:
+                  - generic: Weekly shopping
+                  - generic [ref=e122]: Groceries
+                  - generic [ref=e123]: 11:00
+                  - generic [ref=e124]: €67.30
+                  - button [ref=e125] [cursor=pointer]:
+                    - img [ref=e126]
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - generic [ref=e130]: Tue 14 April
+                - generic [ref=e131]: €13.19
+              - generic [ref=e132]:
+                - generic [ref=e133]:
+                  - generic: Cinema ticket
+                  - generic [ref=e135]: Entertainment
+                  - generic [ref=e136]: 20:00
+                  - generic [ref=e137]: €9.99
+                  - button [ref=e138] [cursor=pointer]:
+                    - img [ref=e139]
+                - generic [ref=e141]:
+                  - generic: Bus
+                  - generic [ref=e143]: Transport
+                  - generic [ref=e144]: 09:00
+                  - generic [ref=e145]: €3.20
+                  - button [ref=e146] [cursor=pointer]:
+                    - img [ref=e147]
+            - generic [ref=e149]:
+              - generic [ref=e150]:
+                - generic [ref=e151]: Mon 13 April
+                - generic [ref=e152]: €67.50
+              - generic [ref=e153]:
+                - generic [ref=e154]:
+                  - generic: New book
+                  - generic [ref=e156]: Other
+                  - generic [ref=e157]: 14:00
+                  - generic [ref=e158]: €45.00
+                  - button [ref=e159] [cursor=pointer]:
+                    - img [ref=e160]
+                - generic [ref=e162]:
+                  - generic: Lunch with friends
+                  - generic [ref=e164]: Food
+                  - generic [ref=e165]: 13:00
+                  - generic [ref=e166]: €22.50
+                  - button [ref=e167] [cursor=pointer]:
+                    - img [ref=e168]
+          - generic [ref=e170]:
+            - generic [ref=e171]:
+              - paragraph [ref=e172]: Add expense
+              - spinbutton [ref=e173]
+              - generic [ref=e174]:
+                - button "Entertainment" [ref=e175] [cursor=pointer]: Entertainment
+                - button "Food" [ref=e177] [cursor=pointer]: Food
+                - button "Groceries" [ref=e179] [cursor=pointer]: Groceries
+                - button "Health" [ref=e181] [cursor=pointer]: Health
+                - button "Other" [ref=e183] [cursor=pointer]: Other
+                - button "Transport" [ref=e185] [cursor=pointer]: Transport
+              - textbox "Note (optional)" [ref=e187]
+              - button "Save expense" [ref=e188] [cursor=pointer]
+            - generic [ref=e189]:
+              - paragraph [ref=e190]: This month
+              - generic [ref=e192]:
+                - generic [ref=e193]: Groceries
+                - generic [ref=e195]: €67.30
+              - generic [ref=e199]:
+                - generic [ref=e200]: Food
+                - generic [ref=e202]: €58.40
+              - generic [ref=e206]:
+                - generic [ref=e207]: Health
+                - generic [ref=e209]: €47.50
+              - generic [ref=e213]:
+                - generic [ref=e214]: Other
+                - generic [ref=e216]: €45.00
+              - generic [ref=e220]:
+                - generic [ref=e221]: Entertainment
+                - generic [ref=e223]: €9.99
+              - generic [ref=e227]:
+                - generic [ref=e228]: Transport
+                - generic [ref=e230]: €6.00
+  - alert [ref=e233]

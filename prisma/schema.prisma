@@ -32,6 +32,8 @@ model Account {
   color     String   @default("#5a68a8")
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
+
+  @@index([userId])
 }
 
 model RecurringPayment {
@@ -48,6 +50,8 @@ model RecurringPayment {
   category         String?
   notes            String?
   createdAt        DateTime  @default(now())
+
+  @@index([userId])
 }
 
 model Goal {
@@ -63,6 +67,8 @@ model Goal {
   deadline      DateTime
   description   String?
   createdAt     DateTime @default(now())
+
+  @@index([userId])
 }
 
 model Category {
@@ -72,6 +78,8 @@ model Category {
   name          String
   color         String         @default("#9ca3af")
   dailyExpenses DailyExpense[]
+
+  @@index([userId])
 }
 
 model DailyExpense {
@@ -85,6 +93,9 @@ model DailyExpense {
   note       String?
   source     String   @default("web") // web | bot
   createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([userId, createdAt])
 }
 
 model Investment {

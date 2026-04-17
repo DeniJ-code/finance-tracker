@@ -99,7 +99,8 @@ export function DailyClient({
   }
 
   function handleDelete(id: string) {
-    if (!window.confirm(`Delete "${expenses.find(x => x.id === id)?.note || expenses.find(x => x.id === id)?.category.name || 'this expense'}"?`)) return
+    const expense = expenses.find(x => x.id === id)
+    if (!window.confirm(`Delete "${expense?.note || expense?.category.name || 'this expense'}"?`)) return
     startTransition(async () => {
       await deleteDailyExpense(id)
       router.refresh()

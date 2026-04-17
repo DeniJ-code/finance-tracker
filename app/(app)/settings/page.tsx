@@ -1,10 +1,12 @@
 import { db } from '@/lib/db'
 import { getSession } from '@/lib/auth'
+import { redirect } from 'next/navigation'
 import { updateBaseCurrency } from './actions'
 import { SUPPORTED_CURRENCIES } from '@/lib/format'
 
 export default async function SettingsPage() {
   const session = await getSession()
+  if (!session.userId) redirect('/auth')
   const user = await db.user.findUnique({ where: { id: session.userId } })
 
   return (

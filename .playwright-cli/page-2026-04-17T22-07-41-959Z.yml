@@ -1,0 +1,197 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e5]
+        - generic [ref=e10]: Finance
+      - link "Dashboard" [ref=e11] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e12]
+        - text: Dashboard
+      - link "Daily" [ref=e17] [cursor=pointer]:
+        - /url: /daily
+        - img [ref=e18]
+        - text: Daily
+      - link "Recurring" [ref=e21] [cursor=pointer]:
+        - /url: /recurring
+        - img [ref=e22]
+        - text: Recurring
+      - link "Goals" [ref=e26] [cursor=pointer]:
+        - /url: /goals
+        - img [ref=e27]
+        - text: Goals
+      - link "Capital" [ref=e30] [cursor=pointer]:
+        - /url: /capital
+        - img [ref=e31]
+        - text: Capital
+      - link "Investments" [ref=e34] [cursor=pointer]:
+        - /url: /investments
+        - img [ref=e35]
+        - text: Investments
+      - generic [ref=e37]:
+        - link "Settings" [ref=e39] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e40]
+          - text: Settings
+        - button "Log out" [ref=e43] [cursor=pointer]:
+          - img [ref=e44]
+          - text: Log out
+    - main [ref=e47]:
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - heading "Regular Payments" [level=1] [ref=e50]
+          - button "Add payment" [ref=e51] [cursor=pointer]:
+            - img [ref=e52]
+            - text: Add payment
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - paragraph [ref=e56]: Annual expenses
+            - paragraph [ref=e57]: €11,950.44
+          - generic [ref=e58]:
+            - paragraph [ref=e59]: Monthly expenses
+            - paragraph [ref=e60]: €995.87
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: Annual income
+            - paragraph [ref=e63]: €48,000.00
+          - generic [ref=e64]:
+            - paragraph [ref=e65]: Monthly income
+            - paragraph [ref=e66]: €4,000.00
+        - generic [ref=e67]:
+          - button "All" [ref=e68] [cursor=pointer]
+          - button "Expenses" [ref=e69] [cursor=pointer]
+          - button "Income" [ref=e70] [cursor=pointer]
+          - button "Subscriptions" [ref=e71] [cursor=pointer]
+        - table [ref=e73]:
+          - rowgroup [ref=e74]:
+            - row "Type Name Amount Frequency Annual Monthly Status Next payment date" [ref=e75]:
+              - columnheader "Type" [ref=e76]
+              - columnheader "Name" [ref=e77]
+              - columnheader "Amount" [ref=e78]
+              - columnheader "Frequency" [ref=e79]
+              - columnheader "Annual" [ref=e80]
+              - columnheader "Monthly" [ref=e81]
+              - columnheader "Status" [ref=e82]
+              - columnheader "Next payment date" [ref=e83]
+              - columnheader [ref=e84]
+          - rowgroup [ref=e85]:
+            - row "Subscription Netflix €15.99 12×/yr €191.88 €15.99 Active 21/04/2026 Edit Netflix Delete Netflix" [ref=e86]:
+              - cell "Subscription" [ref=e87]
+              - cell "Netflix" [ref=e88]
+              - cell "€15.99" [ref=e89]
+              - cell "12×/yr" [ref=e90]
+              - cell "€191.88" [ref=e91]
+              - cell "€15.99" [ref=e92]
+              - cell "Active" [ref=e93]
+              - cell "21/04/2026" [ref=e94]
+              - cell "Edit Netflix Delete Netflix" [ref=e95]:
+                - generic [ref=e96]:
+                  - button "Edit Netflix" [ref=e97] [cursor=pointer]:
+                    - img [ref=e98]
+                  - button "Delete Netflix" [ref=e101] [cursor=pointer]:
+                    - img [ref=e102]
+            - row "Subscription Spotify €9.99 12×/yr €119.88 €9.99 Active 28/04/2026 Edit Spotify Delete Spotify" [ref=e104]:
+              - cell "Subscription" [ref=e105]
+              - cell "Spotify" [ref=e106]
+              - cell "€9.99" [ref=e107]
+              - cell "12×/yr" [ref=e108]
+              - cell "€119.88" [ref=e109]
+              - cell "€9.99" [ref=e110]
+              - cell "Active" [ref=e111]
+              - cell "28/04/2026" [ref=e112]
+              - cell "Edit Spotify Delete Spotify" [ref=e113]:
+                - generic [ref=e114]:
+                  - button "Edit Spotify" [ref=e115] [cursor=pointer]:
+                    - img [ref=e116]
+                  - button "Delete Spotify" [ref=e119] [cursor=pointer]:
+                    - img [ref=e120]
+            - row "Expense Gym membership €39.90 12×/yr €478.80 €39.90 Active 19/04/2026 Edit Gym membership Delete Gym membership" [ref=e122]:
+              - cell "Expense" [ref=e123]
+              - cell "Gym membership" [ref=e124]
+              - cell "€39.90" [ref=e125]
+              - cell "12×/yr" [ref=e126]
+              - cell "€478.80" [ref=e127]
+              - cell "€39.90" [ref=e128]
+              - cell "Active" [ref=e129]
+              - cell "19/04/2026" [ref=e130]
+              - cell "Edit Gym membership Delete Gym membership" [ref=e131]:
+                - generic [ref=e132]:
+                  - button "Edit Gym membership" [ref=e133] [cursor=pointer]:
+                    - img [ref=e134]
+                  - button "Delete Gym membership" [ref=e137] [cursor=pointer]:
+                    - img [ref=e138]
+            - row "Expense Rent €900.00 12×/yr €10,800.00 €900.00 Active 24/04/2026 Edit Rent Delete Rent" [ref=e140]:
+              - cell "Expense" [ref=e141]
+              - cell "Rent" [ref=e142]
+              - cell "€900.00" [ref=e143]
+              - cell "12×/yr" [ref=e144]
+              - cell "€10,800.00" [ref=e145]
+              - cell "€900.00" [ref=e146]
+              - cell "Active" [ref=e147]
+              - cell "24/04/2026" [ref=e148]
+              - cell "Edit Rent Delete Rent" [ref=e149]:
+                - generic [ref=e150]:
+                  - button "Edit Rent" [ref=e151] [cursor=pointer]:
+                    - img [ref=e152]
+                  - button "Delete Rent" [ref=e155] [cursor=pointer]:
+                    - img [ref=e156]
+            - row "Expense Internet €29.99 12×/yr €359.88 €29.99 Active 01/05/2026 Edit Internet Delete Internet" [ref=e158]:
+              - cell "Expense" [ref=e159]
+              - cell "Internet" [ref=e160]
+              - cell "€29.99" [ref=e161]
+              - cell "12×/yr" [ref=e162]
+              - cell "€359.88" [ref=e163]
+              - cell "€29.99" [ref=e164]
+              - cell "Active" [ref=e165]
+              - cell "01/05/2026" [ref=e166]
+              - cell "Edit Internet Delete Internet" [ref=e167]:
+                - generic [ref=e168]:
+                  - button "Edit Internet" [ref=e169] [cursor=pointer]:
+                    - img [ref=e170]
+                  - button "Delete Internet" [ref=e173] [cursor=pointer]:
+                    - img [ref=e174]
+            - row "Income Salary €3,200.00 12×/yr €38,400.00 €3,200.00 Active 06/05/2026 Edit Salary Delete Salary" [ref=e176]:
+              - cell "Income" [ref=e177]
+              - cell "Salary" [ref=e178]
+              - cell "€3,200.00" [ref=e179]
+              - cell "12×/yr" [ref=e180]
+              - cell "€38,400.00" [ref=e181]
+              - cell "€3,200.00" [ref=e182]
+              - cell "Active" [ref=e183]
+              - cell "06/05/2026" [ref=e184]
+              - cell "Edit Salary Delete Salary" [ref=e185]:
+                - generic [ref=e186]:
+                  - button "Edit Salary" [ref=e187] [cursor=pointer]:
+                    - img [ref=e188]
+                  - button "Delete Salary" [ref=e191] [cursor=pointer]:
+                    - img [ref=e192]
+            - row "Income Freelance €800.00 12×/yr €9,600.00 €800.00 Active — Edit Freelance Delete Freelance" [ref=e194]:
+              - cell "Income" [ref=e195]
+              - cell "Freelance" [ref=e196]
+              - cell "€800.00" [ref=e197]
+              - cell "12×/yr" [ref=e198]
+              - cell "€9,600.00" [ref=e199]
+              - cell "€800.00" [ref=e200]
+              - cell "Active" [ref=e201]
+              - cell "—" [ref=e202]
+              - cell "Edit Freelance Delete Freelance" [ref=e203]:
+                - generic [ref=e204]:
+                  - button "Edit Freelance" [ref=e205] [cursor=pointer]:
+                    - img [ref=e206]
+                  - button "Delete Freelance" [ref=e209] [cursor=pointer]:
+                    - img [ref=e210]
+            - row "Subscription Old Adobe Plan €54.99 12×/yr €659.88 €54.99 Cancelled — Edit Old Adobe Plan Delete Old Adobe Plan" [ref=e212]:
+              - cell "Subscription" [ref=e213]
+              - cell "Old Adobe Plan" [ref=e214]
+              - cell "€54.99" [ref=e215]
+              - cell "12×/yr" [ref=e216]
+              - cell "€659.88" [ref=e217]
+              - cell "€54.99" [ref=e218]
+              - cell "Cancelled" [ref=e219]
+              - cell "—" [ref=e220]
+              - cell "Edit Old Adobe Plan Delete Old Adobe Plan" [ref=e221]:
+                - generic [ref=e222]:
+                  - button "Edit Old Adobe Plan" [ref=e223] [cursor=pointer]:
+                    - img [ref=e224]
+                  - button "Delete Old Adobe Plan" [ref=e227] [cursor=pointer]:
+                    - img [ref=e228]
+  - alert [ref=e230]

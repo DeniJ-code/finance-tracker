@@ -1,0 +1,65 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e5]
+        - generic [ref=e10]: Finance
+      - link "Dashboard" [ref=e11] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e12]
+        - text: Dashboard
+      - link "Daily" [ref=e17] [cursor=pointer]:
+        - /url: /daily
+        - img [ref=e18]
+        - text: Daily
+      - link "Recurring" [ref=e21] [cursor=pointer]:
+        - /url: /recurring
+        - img [ref=e22]
+        - text: Recurring
+      - link "Goals" [ref=e26] [cursor=pointer]:
+        - /url: /goals
+        - img [ref=e27]
+        - text: Goals
+      - link "Capital" [ref=e30] [cursor=pointer]:
+        - /url: /capital
+        - img [ref=e31]
+        - text: Capital
+      - link "Investments" [ref=e34] [cursor=pointer]:
+        - /url: /investments
+        - img [ref=e35]
+        - text: Investments
+      - generic [ref=e37]:
+        - link "Settings" [ref=e39] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e40]
+          - text: Settings
+        - button "Log out" [ref=e43] [cursor=pointer]:
+          - img [ref=e44]
+          - text: Log out
+    - main [ref=e47]:
+      - generic [ref=e48]:
+        - heading "Settings" [level=1] [ref=e49]
+        - generic [ref=e50]:
+          - heading "Telegram account" [level=2] [ref=e51]
+          - generic [ref=e53]: "@demo_user"
+        - generic [ref=e54]:
+          - heading "Base currency" [level=2] [ref=e55]
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - generic [ref=e58] [cursor=pointer]:
+                - radio "EUR" [checked] [ref=e59]
+                - text: EUR
+              - generic [ref=e60] [cursor=pointer]:
+                - radio "USD" [ref=e61]
+                - text: USD
+              - generic [ref=e62] [cursor=pointer]:
+                - radio "RUB" [ref=e63]
+                - text: RUB
+              - generic [ref=e64] [cursor=pointer]:
+                - radio "GBP" [ref=e65]
+                - text: GBP
+              - generic [ref=e66] [cursor=pointer]:
+                - radio "CHF" [ref=e67]
+                - text: CHF
+            - button "Save" [ref=e68] [cursor=pointer]
+  - alert [ref=e69]

@@ -3,6 +3,9 @@
 import { db } from '@/lib/db'
 import { getSession } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
+import { SUPPORTED_CURRENCIES } from '@/lib/format'
+
+const ALLOWED_FREQUENCIES = [1, 2, 4, 12, 26, 52]
 
 function parsePaymentFields(formData: FormData) {
   const name = formData.get('name') as string
@@ -20,7 +23,8 @@ function parsePaymentFields(formData: FormData) {
   if (!['expense', 'income', 'subscription'].includes(type)) throw new Error('Invalid type')
   if (!['active', 'cancelled'].includes(status)) throw new Error('Invalid status')
   if (isNaN(amount) || amount <= 0) throw new Error('Invalid amount')
-  if (isNaN(frequencyPerYear) || frequencyPerYear <= 0) throw new Error('Invalid frequency')
+  if (!ALLOWED_FREQUENCIES.includes(frequencyPerYear)) throw new Error('Invalid frequency')
+  if (!SUPPORTED_CURRENCIES.includes(currency)) throw new Error('Invalid currency')
 
   return { name, type, amount, currency, frequencyPerYear, category, status, nextPaymentDate, notes }
 }

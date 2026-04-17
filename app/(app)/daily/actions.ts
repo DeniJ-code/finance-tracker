@@ -18,6 +18,9 @@ export async function createDailyExpense(formData: FormData) {
   if (!categoryId) throw new Error('Category required')
   if (!SUPPORTED_CURRENCIES.includes(currency)) throw new Error('Invalid currency')
 
+  const category = await db.category.findFirst({ where: { id: categoryId, userId: session.userId } })
+  if (!category) throw new Error('Invalid category')
+
   await db.dailyExpense.create({
     data: { userId: session.userId, amount, currency, categoryId, note, source: 'web' },
   })

@@ -31,7 +31,8 @@ export default async function DashboardPage() {
   ])
 
   const baseCurrency = user?.baseCurrency ?? 'EUR'
-  const rates = rawAccounts.length > 0 ? await fetchRates(baseCurrency) : {}
+  const needsRates = rawAccounts.length > 0 || rawPayments.length > 0 || rawGoals.length > 0
+  const rates = needsRates ? await fetchRates(baseCurrency) : {}
 
   // KPI: total capital
   const totalCapital = rawAccounts.reduce(
@@ -58,7 +59,12 @@ export default async function DashboardPage() {
   )
   const monthlyGoalSavings = activeGoals.reduce(
     (s, g) =>
-      s + goalMonthlyRequired(Number(g.targetAmount), Number(g.currentAmount), new Date(g.deadline)),
+      s + convertToBase(
+        goalMonthlyRequired(Number(g.targetAmount), Number(g.currentAmount), new Date(g.deadline)),
+        g.currency,
+        baseCurrency,
+        rates,
+      ),
     0
   )
 

@@ -36,7 +36,19 @@
       "Bash(docker run *)",
       "Bash(docker exec *)",
       "Bash(npx tsx *)",
-      "Bash(echo \"PID: $!\")"
+      "Bash(echo \"PID: $!\")",
+      "Bash(command -v npx)",
+      "Bash(export PWCLI=\"/home/deni/.claude/skills/playwright/scripts/playwright_cli.sh\")",
+      "Bash(chmod +x /home/deni/.claude/skills/playwright/scripts/playwright_cli.sh)",
+      "Bash(echo \"Dev server PID: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(/home/deni/.claude/skills/playwright/scripts/playwright_cli.sh open *)",
+      "Bash(curl -s http://localhost:3000/api/auth/dev-login -L -I)",
+      "Bash(curl -s http://localhost:3000/api/auth/dev-login -o /dev/null -w \"%{http_code}\")",
+      "Bash(/home/deni/.claude/skills/playwright/scripts/playwright_cli.sh screenshot *)",
+      "Bash(/home/deni/.claude/skills/playwright/scripts/playwright_cli.sh navigate *)",
+      "Bash(/home/deni/.claude/skills/playwright/scripts/playwright_cli.sh goto *)",
+      "Bash(ls -t /home/deni/Schreibtisch/Vibecoding/Finance-Tracker/.playwright-cli/*.png)"
     ]
   }
 }

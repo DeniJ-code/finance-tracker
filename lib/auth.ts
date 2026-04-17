@@ -3,6 +3,10 @@ import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import { sessionOptions, SessionData } from './session'
 
+if (!process.env.TELEGRAM_BOT_TOKEN) {
+  throw new Error('TELEGRAM_BOT_TOKEN environment variable is not set')
+}
+
 export function verifyTelegramPayload(data: Record<string, string>): boolean {
   const { hash, ...fields } = data
 

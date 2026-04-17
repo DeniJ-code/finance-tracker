@@ -1,5 +1,8 @@
 jest.mock('@/lib/db', () => ({
   db: {
+    category: {
+      findFirst: jest.fn().mockResolvedValue({ id: 'cat_1', userId: 'user_1' }),
+    },
     dailyExpense: {
       create: jest.fn().mockResolvedValue({}),
       deleteMany: jest.fn().mockResolvedValue({}),

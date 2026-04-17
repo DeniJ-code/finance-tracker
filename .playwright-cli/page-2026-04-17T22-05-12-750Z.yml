@@ -1,0 +1,119 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - img [ref=e5]
+        - generic [ref=e10]: Finance
+      - link "Dashboard" [ref=e11] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e12]
+        - text: Dashboard
+      - link "Daily" [ref=e17] [cursor=pointer]:
+        - /url: /daily
+        - img [ref=e18]
+        - text: Daily
+      - link "Recurring" [ref=e21] [cursor=pointer]:
+        - /url: /recurring
+        - img [ref=e22]
+        - text: Recurring
+      - link "Goals" [ref=e26] [cursor=pointer]:
+        - /url: /goals
+        - img [ref=e27]
+        - text: Goals
+      - link "Capital" [ref=e30] [cursor=pointer]:
+        - /url: /capital
+        - img [ref=e31]
+        - text: Capital
+      - link "Investments" [ref=e34] [cursor=pointer]:
+        - /url: /investments
+        - img [ref=e35]
+        - text: Investments
+      - generic [ref=e37]:
+        - link "Settings" [ref=e39] [cursor=pointer]:
+          - /url: /settings
+          - img [ref=e40]
+          - text: Settings
+        - button "Log out" [ref=e43] [cursor=pointer]:
+          - img [ref=e44]
+          - text: Log out
+    - main [ref=e47]:
+      - generic [ref=e48]:
+        - heading "Dashboard" [level=1] [ref=e49]
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - paragraph [ref=e52]: Total capital
+            - paragraph [ref=e53]: €14,462.01
+          - generic [ref=e54]:
+            - paragraph [ref=e55]: Monthly expenses
+            - paragraph [ref=e56]: €995.87
+          - generic [ref=e57]:
+            - paragraph [ref=e58]: Monthly income
+            - paragraph [ref=e59]: €4,000.00
+          - generic [ref=e60]:
+            - paragraph [ref=e61]: Monthly goal savings
+            - paragraph [ref=e62]: €1,292.80
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - generic [ref=e65]:
+              - paragraph [ref=e66]: Goals
+              - link "View all" [ref=e67] [cursor=pointer]:
+                - /url: /goals
+            - generic [ref=e68]:
+              - generic [ref=e69]:
+                - generic [ref=e70]: Emergency Fund
+                - generic [ref=e71]: €2,150.00 / €5,000.00
+              - paragraph [ref=e74]: 43%
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - generic [ref=e77]: New MacBook Pro
+                - generic [ref=e78]: €890.00 / €2,499.00
+              - paragraph [ref=e81]: 36%
+            - generic [ref=e82]:
+              - generic [ref=e83]:
+                - generic [ref=e84]: Japan Trip
+                - generic [ref=e85]: €600.00 / €3,500.00
+              - paragraph [ref=e88]: 17%
+            - generic [ref=e89]:
+              - generic [ref=e90]:
+                - generic [ref=e91]: Investment Portfolio
+                - generic [ref=e92]: €4,200.00 / €20,000.00
+              - paragraph [ref=e95]: 21%
+          - generic [ref=e96]:
+            - generic [ref=e97]:
+              - paragraph [ref=e98]: Upcoming payments
+              - link "View all" [ref=e99] [cursor=pointer]:
+                - /url: /recurring
+            - generic [ref=e100]:
+              - generic [ref=e101]:
+                - paragraph [ref=e102]: Gym membership
+                - paragraph [ref=e103]: 19/04/2026 · in 1 day
+              - paragraph [ref=e104]: €39.90
+            - generic [ref=e105]:
+              - generic [ref=e106]:
+                - paragraph [ref=e107]: Netflix
+                - paragraph [ref=e108]: 21/04/2026 · in 3 days
+              - paragraph [ref=e109]: €15.99
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - paragraph [ref=e112]: Rent
+                - paragraph [ref=e113]: 24/04/2026 · in 6 days
+              - paragraph [ref=e114]: €900.00
+            - generic [ref=e115]:
+              - generic [ref=e116]:
+                - paragraph [ref=e117]: Spotify
+                - paragraph [ref=e118]: 28/04/2026 · in 10 days
+              - paragraph [ref=e119]: €9.99
+            - generic [ref=e120]:
+              - generic [ref=e121]:
+                - paragraph [ref=e122]: Internet
+                - paragraph [ref=e123]: 01/05/2026 · in 13 days
+              - paragraph [ref=e124]: €29.99
+        - generic [ref=e125]:
+          - generic [ref=e126]:
+            - paragraph [ref=e127]: Today
+            - link "Add expense" [ref=e128] [cursor=pointer]:
+              - /url: /daily
+              - img [ref=e129]
+              - text: Add expense
+          - paragraph [ref=e131]: No expenses recorded today.
+  - alert [ref=e132]

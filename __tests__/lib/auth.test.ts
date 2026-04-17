@@ -18,11 +18,7 @@ function makeValidPayload(botToken: string) {
 }
 
 describe('verifyTelegramPayload', () => {
-  const BOT_TOKEN = 'test_bot_token_123'
-
-  beforeAll(() => {
-    process.env.TELEGRAM_BOT_TOKEN = BOT_TOKEN
-  })
+  const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!
 
   it('returns true for a valid signed payload', () => {
     const payload = makeValidPayload(BOT_TOKEN)
