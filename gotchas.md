@@ -1,87 +1,150 @@
 # Gotchas — Finance Tracker
 
-Подвохи проекта и история косяков агента. Обновляется после каждой рабочей сессии.
+Project pitfalls and a log of past agent mistakes. Updated after each working session.
 
 ---
 
-## Архитектурные подвохи
+## Architecture
 
-### Единый источник валют
-`SUPPORTED_CURRENCIES` живёт в `lib/format.ts`. Нигде не дублировать — ни в `actions.ts`, ни в page-компонентах. Ошибка уже была: `settings/actions.ts` держал свой inline-массив, который молча расходился.
+### Single source of truth for currencies
+`SUPPORTED_CURRENCIES` lives in `lib/format.ts`. Never duplicate it — not in `actions.ts`, not in page components. `settings/actions.ts` once held its own inline array that silently diverged.
 
-### Базовая валюта и конвертация KPI
-Все суммы на дашборде (Today total, Monthly expenses, Monthly income) конвертируются в `baseCurrency` пользователя через `lib/exchange.ts`. Если добавляешь новый KPI — конвертация обязательна, иначе цифра будет врать при мультивалютных аккаунтах. Ошибка была сделана три раза подряд (отдельные фиксы: ea96145, f0d14a1, e8d382b).
+### Every KPI on the dashboard must be currency-converted
+All amounts shown in `baseCurrency` must go through `convertToBase()` from `lib/exchange.ts`. This was missed three times in a row on separate KPIs: today's total, monthly expenses/income, and monthly goal savings. If you add a new KPI — conversion is mandatory.
 
-### fetchRates не вызывать без аккаунтов
-В `capital`-странице был баг: `fetchRates` вызывался даже когда список аккаунтов пуст. Проверяй наличие аккаунтов перед запросом курсов.
+### fetchRates must be fetched when ANY resource needs rates, not just accounts
+The condition `rawAccounts.length > 0 ? await fetchRates(...) : {}` is wrong if payments or goals also need conversion. After the code review fix, the condition checks all three: `rawAccounts.length > 0 || rawPayments.length > 0 || rawGoals.length > 0`.
 
----
+### Every page needs an auth guard before any DB call
+Pattern used on every page — **including settings**:
+```ts
+const session = await getSession()
+if (!session.userId) redirect('/auth')
+```
+`settings/page.tsx` was missing this, leaving the DB call reachable with an empty session.
 
-## UI / дизайн
+### categoryId ownership must be verified before inserting a DailyExpense
+`createDailyExpense` must confirm the category belongs to the authenticated user:
+```ts
+const category = await db.category.findFirst({ where: { id: categoryId, userId: session.userId } })
+if (!category) throw new Error('Invalid category')
+```
+Without this, a logged-in user can attach another user's category to their expense.
 
-### Язык интерфейса — только английский
-Все тексты, лейблы, пустые состояния, ошибки — на английском. Ошибка была: sidebar, кнопка «Выйти», подзаголовок auth-страницы и заголовки settings остались на русском. Пришлось отдельный фикс-коммит (97a0617).
-
-### Локаль дат — en-GB
-`formatDate` и `formatMonth` в `lib/format.ts` используют `en-GB`. Не менять на `ru-RU`. Ошибка была: форматирование дат в `DailyClient` использовало русскую локаль.
-
-### Никаких ALL CAPS
-Лейблы в nav и кнопках — sentence case или Title Case. ALL CAPS запрещён. Ошибка была в навигации (76b2829).
-
-### Иконки — только SVG
-Никаких эмодзи в UI. Даже в пустых состояниях и плейсхолдерах.
-
-### Категории и цвета аккаунтов — приглушённая палитра
-- Категории: маленький muted dot + тихий серый текст. Никаких ярких бейджей.
-- Палитра: Indigo `#6366f1` primary; `#5a8a60`, `#5a68a8`, `#a3845a`, `#a85a8a` для категорий/аккаунтов.
-- Ошибка: использовались `grid-cols-3` для кнопок категорий — длинные названия типа "Entertainment" обрезались. Заменить на `flex flex-wrap`.
-
-### Color presets требуют имена
-`COLOR_PRESETS` должны иметь human-readable имена (Blue, Green...). Без них `aria-label` пишет hex, что бесполезно для скринридеров. Ошибка в 3569c37.
+### Server action validation should match the UI options
+`frequencyPerYear` in recurring payments was only checked for `> 0` on the server, while the UI offers only `[1, 2, 4, 12, 26, 52]`. Server validation must match UI options — use `ALLOWED_FREQUENCIES.includes(frequencyPerYear)`.
 
 ---
 
-## Безопасность
+## Database
 
-### Валидировать color из формы
-Цвет аккаунта приходит из формы как строка. Обязательно проверять по `ALLOWED_COLORS` allowlist в `capital/actions.ts` — иначе CSS injection. Ошибка была исправлена в 510eaa4.
+### All child models need @@index([userId])
+Every model that has a `userId` foreign key (`Account`, `RecurringPayment`, `Goal`, `Category`, `DailyExpense`) must have `@@index([userId])` in `schema.prisma`. Without it every page load is a full table scan. `DailyExpense` also benefits from a compound `@@index([userId, createdAt])` because the dashboard filters by date.
+
+---
+
+## Types & Session
+
+### SessionData.userId must be typed as optional
+`iron-session` returns every field as `undefined` on an empty session, regardless of how you type it in `SessionData`. Typing `userId: string` (non-optional) just silences TypeScript and hides the bug. Correct type: `userId?: string`.
+
+### Don't store telegramId in the session
+`session.telegramId = Number(user.telegramId)` is lossy — Telegram IDs are `BigInt` in the DB. `Number(BigInt)` silently corrupts IDs larger than `Number.MAX_SAFE_INTEGER`. Since `telegramId` is never read back from the session for any auth check, it was removed. If you need it later, store it as a `string`.
+
+### Required env vars should throw at module load time, not silently produce wrong results
+```ts
+if (!process.env.TELEGRAM_BOT_TOKEN) {
+  throw new Error('TELEGRAM_BOT_TOKEN environment variable is not set')
+}
+```
+Without this, a missing token causes a silently wrong HMAC key — every auth check passes with a corrupted signature.
+
+---
+
+## Testing
+
+### next/cache must be mocked
+`next/cache` does not exist in the Jest environment. Mock it in `jest.setup.ts` or per-test file.
+
+### Clear mocks between tests
+Use `jest.clearAllMocks()` or `beforeEach(() => jest.resetAllMocks())`. Without it, mock state leaks between tests.
+
+### Set required env vars in jest.setup.ts, not in test files
+Module-level startup checks (like the `TELEGRAM_BOT_TOKEN` throw) execute when the module is first imported. ES `import` statements are hoisted above regular code, so setting `process.env.X = '...'` at the top of a test file runs *after* the module has already thrown. Set env vars in `jest.setup.ts` (runs before any module loads):
+```ts
+process.env.TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN ?? 'test_bot_token_for_jest'
+```
+
+### db mock must include all methods called by the action
+If an action now calls `db.category.findFirst`, the mock must include `category: { findFirst: jest.fn().mockResolvedValue({...}) }`. Missing methods crash with `Cannot read properties of undefined`.
+
+---
+
+## UI / Design
+
+### Language is English only
+All text, labels, empty states, errors — English. Sidebar, auth page subtitle, settings headings, and the logout button were once in Russian and required a separate fix commit.
+
+### Date locale is en-GB
+`formatDate` and `formatMonth` in `lib/format.ts` use `'en-GB'`. Do not change to `ru-RU`. `DailyClient` once used the Russian locale for day headers.
+
+### No ALL CAPS
+Nav labels and buttons use sentence case or Title Case. ALL CAPS is banned.
+
+### Icons are SVG only
+No emoji in UI, including empty states and placeholders.
+
+### Category buttons must use flex-wrap, not grid
+`grid-cols-3` on the quick-add category buttons truncates long names like "Entertainment". Use `flex flex-wrap` instead.
+
+### Color presets must have human-readable names
+`COLOR_PRESETS` must be `{ value: string; label: string }[]`. Without labels, `aria-label` shows hex values, which are useless for screen readers.
+
+### Muted color palette
+- Primary: Indigo `#6366f1`
+- Category/account colors: `#5a8a60`, `#5a68a8`, `#a3845a`, `#a85a8a`, `#8a5a5a`, `#9ca3af`
+- No bright badges — small muted dot + quiet text only
+
+---
+
+## Security
+
+### Validate color input against an allowlist
+Account color comes from a form field as a plain string. Always check against `ALLOWED_COLORS` in `capital/actions.ts` — otherwise CSS injection is possible via inline `style={{ backgroundColor }}`.
 
 ---
 
 ## Accessibility
 
-### aria-labels на интерактивных элементах
-Каждый `<button>` без текста, каждый `<input>` без `<label>` — нужен `aria-label` или `htmlFor`. В нескольких итерациях забывались: color picker (1d08b79), nav items (76b2829), иконки SVG (`aria-hidden="true"` на декоративных).
+### aria-labels on every interactive element without visible text
+Every `<button>` without text and every `<input>` without a `<label>` needs `aria-label` or `htmlFor`. Decorative SVGs need `aria-hidden="true"`.
 
-### Confirmation dialogs должны называть предмет
-"Delete this payment?" — плохо. "Delete 'Netflix'?" — правильно. Пользователь должен понимать что именно удаляет. Ошибка в 3569c37.
-
----
-
-## Тесты
-
-### next/cache нужно мокировать
-В Jest-окружении `next/cache` не существует. Нужен мок в `__mocks__` или в `jest.setup.ts`. Ошибка: тесты падали без него (7fb3bdc).
-
-### Очищать моки между тестами
-`jest.clearAllMocks()` или `beforeEach` + `jest.resetAllMocks()`. Без этого стейт накапливается между тестами. Ошибка в нескольких тест-файлах (4f4632e, e8d382b).
+### Confirmation dialogs must name the item
+"Delete this payment?" — bad. "Delete 'Netflix'?" — correct. The user must know exactly what they're deleting.
 
 ---
 
-## Копирайтинг
+## Copywriting
 
-### Пустые состояния — actionable
-Не "No upcoming payments." а "No upcoming payments with dates set." — и лучше подсказать что делать.
+### Empty states should be actionable
+Not "No upcoming payments." but "No upcoming payments. Set a date on a payment to see it here."
 
-### Единицы времени с правильным множественным числом
-"in 5d" → "in 5 days", "in 1 day" (не "in 1 days"). Ошибка в 3569c37.
+### Pluralise time units correctly
+"in 5 days", "in 1 day" (not "in 1 days"). Template: `in ${n} day${n === 1 ? '' : 's'}`.
 
-### Плейсхолдеры сумм
-Плейсхолдер поля суммы — `Amount`, не `0.00`.
+### Amount placeholder
+Use `Amount`, not `0.00`.
 
-### Заголовки таблиц
-Имя колонки должно совпадать с лейблом в форме. "Next date" в таблице vs "Next payment date" в форме — расхождение было исправлено в 3569c37.
+### Table headers must match form labels
+"Next date" in the table vs "Next payment date" in the form — they must match.
 
 ---
 
-_Последнее обновление: 2026-04-18_
+## Tooling
+
+### .playwright-cli/ must be in .gitignore
+The Playwright CLI writes logs, snapshots, and screenshots to `.playwright-cli/`. Add it to `.gitignore` or it will pollute commits.
+
+---
+
+_Last updated: 2026-04-18_
