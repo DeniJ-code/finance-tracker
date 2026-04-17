@@ -342,7 +342,7 @@ export function RecurringClient({
                     {TYPE_LABELS[p.type]}
                   </span>
                 </td>
-                <td className={`px-4 py-3 text-zinc-200 ${p.status === 'cancelled' ? 'line-through' : ''}`}>
+                <td className={`px-4 py-3 text-zinc-200 whitespace-nowrap ${p.status === 'cancelled' ? 'line-through' : ''}`}>
                   {p.name}
                 </td>
                 <td className="px-4 py-3 text-zinc-300">

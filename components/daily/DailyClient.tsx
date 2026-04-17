@@ -171,10 +171,7 @@ export function DailyClient({
                       <span className="flex-1 text-sm text-zinc-200 truncate">
                         {expense.note || expense.category.name}
                       </span>
-                      <span className="text-xs text-zinc-500 w-16 text-right">
-                        {expense.category.name}
-                      </span>
-                      <span className="text-xs text-zinc-500 w-10 text-right">
+                      <span className="text-xs text-zinc-500 w-10 text-right shrink-0">
                         {formatTime(expense.createdAt)}
                       </span>
                       <span className="text-sm font-medium text-zinc-100 w-20 text-right">
