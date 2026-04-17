@@ -1,4 +1,4 @@
-export const SUPPORTED_CURRENCIES = ['EUR', 'USD', 'RUB', 'GBP', 'CHF']
+export const SUPPORTED_CURRENCIES = ['EUR', 'USD', 'RUB']
 
 export function formatCurrency(amount: number, currency: string): string {
   const safeCurrency = SUPPORTED_CURRENCIES.includes(currency) ? currency : 'EUR'
