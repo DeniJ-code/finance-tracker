@@ -12,11 +12,11 @@ export function formatCurrency(amount: number, currency: string): string {
 
 export function formatDate(date: Date | string): string {
   const d = typeof date === 'string' ? new Date(date) : date
-  return d.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' })
+  return d.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
 }
 
 export function formatMonth(yearMonth: string): string {
   const [year, month] = yearMonth.split('-')
   const d = new Date(Number(year), Number(month) - 1, 1)
-  return d.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })
+  return d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })
 }

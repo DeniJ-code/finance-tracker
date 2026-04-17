@@ -13,7 +13,7 @@ export default function AuthPage() {
           </svg>
           <span className="text-white text-xl font-semibold">Finance Tracker</span>
         </div>
-        <p className="text-zinc-400 text-sm">Войдите через Telegram чтобы продолжить</p>
+        <p className="text-zinc-400 text-sm">Sign in with Telegram to continue</p>
         <TelegramLoginButton />
       </div>
     </div>

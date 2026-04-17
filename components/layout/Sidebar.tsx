@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 const NAV_ITEMS = [
   {
     href: '/dashboard',
-    label: 'Дашборд',
+    label: 'Dashboard',
     icon: (
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/>
@@ -17,7 +17,7 @@ const NAV_ITEMS = [
   },
   {
     href: '/daily',
-    label: 'Ежедневные',
+    label: 'Daily',
     icon: (
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/>
@@ -26,7 +26,7 @@ const NAV_ITEMS = [
   },
   {
     href: '/recurring',
-    label: 'Регулярные',
+    label: 'Recurring',
     icon: (
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M2 8a6 6 0 1 0 12 0"/><path d="M14 8a6 6 0 0 0-6-6"/><path d="M11 5l3-3-3-3"/>
@@ -35,7 +35,7 @@ const NAV_ITEMS = [
   },
   {
     href: '/goals',
-    label: 'Цели',
+    label: 'Goals',
     icon: (
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
         <circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2"/>
@@ -44,7 +44,7 @@ const NAV_ITEMS = [
   },
   {
     href: '/capital',
-    label: 'Капитал',
+    label: 'Capital',
     icon: (
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
         <rect x="2" y="5" width="12" height="9" rx="1.5"/><path d="M5 5V3.5a3 3 0 0 1 6 0V5"/>
@@ -53,7 +53,7 @@ const NAV_ITEMS = [
   },
   {
     href: '/investments',
-    label: 'Инвестиции',
+    label: 'Investments',
     icon: (
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
         <polyline points="1,11 5,6 9,8 15,3"/>
@@ -112,7 +112,7 @@ export function Sidebar() {
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
             <circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M3.2 12.8l1.4-1.4M11.4 4.6l1.4-1.4"/>
           </svg>
-          Настройки
+          Settings
         </Link>
         <button
           onClick={handleLogout}
@@ -121,7 +121,7 @@ export function Sidebar() {
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M6 14H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h3"/><polyline points="11,11 14,8 11,5"/><line x1="14" y1="8" x2="6" y2="8"/>
           </svg>
-          Выйти
+          Log out
         </button>
       </div>
     </aside>

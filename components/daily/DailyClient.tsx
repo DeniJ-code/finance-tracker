@@ -38,7 +38,7 @@ function groupByDay(expenses: Expense[]): [string, Expense[]][] {
 }
 
 function formatDayHeader(isoDate: string): string {
-  return new Date(isoDate).toLocaleDateString('ru-RU', {
+  return new Date(isoDate).toLocaleDateString('en-GB', {
     weekday: 'short',
     day: 'numeric',
     month: 'long',
@@ -46,7 +46,7 @@ function formatDayHeader(isoDate: string): string {
 }
 
 function formatTime(iso: string): string {
-  return new Date(iso).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
+  return new Date(iso).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
 }
 
 export function DailyClient({
@@ -212,7 +212,7 @@ export function DailyClient({
               className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-zinc-100 text-2xl font-light text-right focus:outline-none focus:border-indigo-500"
               required
             />
-            <div className="grid grid-cols-3 gap-1.5">
+            <div className="flex flex-wrap gap-1.5">
               {categories.map(cat => (
                 <button
                   key={cat.id}
